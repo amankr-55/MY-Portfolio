@@ -89,17 +89,18 @@ function initCanvasAnimation() {
 }
 
 /* ==========================================================================
-   Typewriter Effect
+   Typewriter Effect (Grounded in Aman's Resume)
    ========================================================================== */
 function initTypewriter() {
     const textElement = document.getElementById('typewriter');
     if (!textElement) return;
 
     const phrases = [
-        "Computer Science Engineering Student 🎓",
-        "Aspiring Full-Stack Web Developer 💻",
-        "React & Modern JavaScript Enthusiast ⚡",
-        "Smart India Hackathon Participant 🏆"
+        "B.Tech AI & ML Student @ NIAT Jaipur 🎓",
+        "Aspiring Software Developer & AI Builder 🚀",
+        "Full-Stack Web Developer (React + Django) 💻",
+        "Incoming Data Science Intern @ SkillCraft 📊",
+        "Creative Video & Photo Editor ✨"
     ];
 
     let phraseIndex = 0;
@@ -150,8 +151,6 @@ function renderLinkedInPosts() {
                     <img src="${post.postImage}" alt="LinkedIn Post Attachment" style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
             `;
-        } else if (post.mediaType === 'code' && post.codeSnippet) {
-            mediaHtml = `<pre class="linkedin-code-box"><code>${escapeHtml(post.codeSnippet)}</code></pre>`;
         }
 
         const hashtagsHtml = post.hashtags.map(tag => `<span class="linkedin-tag-item">${tag}</span>`).join(' ');
@@ -192,10 +191,6 @@ function renderLinkedInPosts() {
             </div>
         `;
     }).join('');
-}
-
-function escapeHtml(string) {
-    return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 /* ==========================================================================
@@ -331,7 +326,7 @@ function initContactForm() {
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
-        const mailtoUrl = `mailto:amankumar.tech@outlook.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+        const mailtoUrl = `mailto:ak1276054@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
         window.location.href = mailtoUrl;
 
         showToast("Thanks for reaching out! Opening your email client...");
