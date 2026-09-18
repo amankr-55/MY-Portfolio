@@ -1,87 +1,119 @@
-// Aman Kumar - Portfolio Interactions & Logic
+// Aman Kumar - 3D Interactive Web Experience & Logic
 
 document.addEventListener('DOMContentLoaded', () => {
-    initCanvasAnimation();
+    initThreeJSScene();
+    init3DTiltEffects();
     initTypewriter();
     renderLinkedInPosts();
     initThemeToggle();
     initMobileNav();
     initScrollSpy();
     initCounters();
-    initContactForm();
 });
 
 /* ==========================================================================
-   Background Particle Canvas (Dynamic Mesh)
+   Interactive 3D Background with Three.js
    ========================================================================== */
-function initCanvasAnimation() {
-    const canvas = document.getElementById('bg-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+function initThreeJSScene() {
+    const container = document.getElementById('three-canvas-container');
+    if (!container) return;
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    // Check if Three.js is loaded
+    if (typeof THREE === 'undefined') {
+        console.warn('Three.js not loaded, fallback to canvas');
+        return;
+    }
 
-    const particles = [];
-    const particleCount = Math.min(Math.floor(window.innerWidth / 18), 70);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // 1. Floating 3D Geometric Torus Knot Wireframe
+    const geometry = new THREE.TorusKnotGeometry(8, 2.2, 120, 16);
+    const material = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.18
+    });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    torusKnot.position.set(15, 0, -10);
+    scene.add(torusKnot);
+
+    // 2. Floating 3D Icosahedron Core
+    const icoGeo = new THREE.IcosahedronGeometry(6, 1);
+    const icoMat = new THREE.MeshBasicMaterial({
+        color: 0xa855f7,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.22
+    });
+    const ico = new THREE.Mesh(icoGeo, icoMat);
+    ico.position.set(-18, -8, -15);
+    scene.add(ico);
+
+    // 3. 3D Particle Starfield
+    const particlesCount = 350;
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 80;
+    }
+
+    const particlesGeometry = new THREE.BufferGeometry();
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.25,
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
     });
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.6;
-            this.vy = (Math.random() - 0.5) * 0.6;
-            this.radius = Math.random() * 2 + 1;
-        }
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
 
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
+    // Mouse Parallax Interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
 
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-        }
+    window.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+    });
 
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
-            ctx.fill();
-        }
-    }
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
+    const clock = new THREE.Clock();
 
     function animate() {
-        ctx.clearRect(0, 0, width, height);
+        const elapsedTime = clock.getElapsedTime();
 
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
+        targetX += (mouseX - targetX) * 0.05;
+        targetY += (mouseY - targetY) * 0.05;
 
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+        torusKnot.rotation.x = elapsedTime * 0.15 + targetY * 0.3;
+        torusKnot.rotation.y = elapsedTime * 0.2 + targetX * 0.3;
 
-                if (dist < 120) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
-                    ctx.lineWidth = 0.8;
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
+        ico.rotation.x = -elapsedTime * 0.12;
+        ico.rotation.y = elapsedTime * 0.18;
 
+        particlesMesh.rotation.y = -elapsedTime * 0.04 + targetX * 0.1;
+        particlesMesh.rotation.x = targetY * 0.1;
+
+        renderer.render(scene, camera);
         requestAnimationFrame(animate);
     }
 
@@ -89,7 +121,34 @@ function initCanvasAnimation() {
 }
 
 /* ==========================================================================
-   Typewriter Effect (Grounded in Aman's Resume)
+   3D Tilt Card Effects (Perspective Cursor Tracker)
+   ========================================================================== */
+function init3DTiltEffects() {
+    const cards = document.querySelectorAll('.glass-card, .avatar-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+    });
+}
+
+/* ==========================================================================
+   Typewriter Effect
    ========================================================================== */
 function initTypewriter() {
     const textElement = document.getElementById('typewriter');
@@ -163,7 +222,7 @@ function renderLinkedInPosts() {
                         <div class="linkedin-meta">
                             <h4>${post.author}</h4>
                             <p>${post.role}</p>
-                            <p style="font-size: 0.7rem; color: var(--accent-cyan);">${post.date}</p>
+                            <p style="font-size: 0.72rem; color: var(--accent-cyan);">${post.date}</p>
                         </div>
                     </div>
                     <i class="fa-brands fa-linkedin linkedin-brand-icon"></i>
@@ -181,8 +240,8 @@ function renderLinkedInPosts() {
 
                 <div class="linkedin-footer">
                     <div class="linkedin-reactions">
-                        <span class="reaction-icons">👍💡🚀</span>
-                        <span>${post.likes} reactions • ${post.comments} comments</span>
+                        <span>👍💡🚀</span>
+                        <span>${post.likes} reactions &bull; ${post.comments} comments</span>
                     </div>
                     <a href="${post.postUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-link-btn">
                         View Post <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -314,26 +373,8 @@ function initCounters() {
 }
 
 /* ==========================================================================
-   Contact Form & Toast
+   Toast Notification & LinkedIn Quick Connect
    ========================================================================== */
-function initContactForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        const mailtoUrl = `mailto:ak1276054@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
-        window.location.href = mailtoUrl;
-
-        showToast("Thanks for reaching out! Opening your email client...");
-        form.reset();
-    });
-}
-
 function showToast(message) {
     let toast = document.getElementById('toast');
     if (!toast) {
@@ -342,7 +383,7 @@ function showToast(message) {
         toast.className = 'toast-msg';
         document.body.appendChild(toast);
     }
-    toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i> <span>${message}</span>`;
+    toast.innerHTML = `<i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> <span>${message}</span>`;
     toast.classList.add('show');
 
     setTimeout(() => {
@@ -350,8 +391,8 @@ function showToast(message) {
     }, 4000);
 }
 
-window.copyEmail = function(email) {
-    navigator.clipboard.writeText(email).then(() => {
-        showToast("Email address copied to clipboard!");
+window.copyLinkedIn = function() {
+    navigator.clipboard.writeText("https://www.linkedin.com/in/aman-kumar-71944037b").then(() => {
+        showToast("LinkedIn Profile Link copied to clipboard!");
     });
 };

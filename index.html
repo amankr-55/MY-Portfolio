@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aman Kumar | AI & ML Student | Full Stack Web Developer</title>
-    <meta name="description" content="Portfolio of Aman Kumar - B.Tech AI & ML student at NxtWave Institute of Advanced Technologies (NIAT) Jaipur. Web Developer, AI enthusiast, and incoming Data Science Intern at SkillCraft Technology.">
-    <meta name="keywords" content="Aman Kumar, NIAT Jaipur, B.Tech AI ML, NxtWave, TraveLogy, SkillCraft Technology, Full Stack Developer, React, Python, Django">
+    <title>Aman Kumar | 3D AI & ML Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Aman Kumar - B.Tech AI & ML student at NIAT Jaipur. Full-Stack Developer, AI enthusiast, and incoming Data Science Intern at SkillCraft Technology.">
+    <meta name="keywords" content="Aman Kumar, NIAT Jaipur, B.Tech AI ML, NxtWave, TraveLogy, SkillCraft Technology, Full Stack Developer, React, Three.js, Python">
     
     <!-- Open Graph / LinkedIn Preview -->
-    <meta property="og:title" content="Aman Kumar | AI & ML Student & Full Stack Developer">
-    <meta property="og:description" content="B.Tech AI & ML Student at NIAT Jaipur | Incoming Data Science Intern at SkillCraft Technology | Full Stack Developer & Hackathon Innovator.">
+    <meta property="og:title" content="Aman Kumar | 3D AI & ML Developer Portfolio">
+    <meta property="og:description" content="B.Tech AI & ML Student at NIAT Jaipur | Incoming Data Science Intern at SkillCraft Technology | Full Stack Developer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amankr-55.github.io/MY-Portfolio/">
     
@@ -21,6 +21,9 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Three.js 3D WebGL Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/profile.jpg">
     
@@ -28,8 +31,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Canvas, Profile Backdrop & Glowing Ambient Lights -->
-    <canvas id="bg-canvas"></canvas>
+    <!-- 3D WebGL Canvas Layer, Profile Backdrop & Glowing Ambient Lights -->
+    <div id="three-canvas-container"></div>
     <div class="bg-profile-backdrop"></div>
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
@@ -49,10 +52,10 @@
                 <li><a href="#about">About &amp; College</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Internship</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects">GitHub Repos</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#linkedin-posts">LinkedIn Posts</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Connect</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -75,7 +78,7 @@
                     <div class="hero-content">
                         <div class="status-pill">
                             <span class="status-dot"></span>
-                            <span>🎓 B.Tech AI &amp; ML Student @ NIAT, Jaipur</span>
+                            <span>🎓 B.Tech AI &amp; ML Student @ NIAT</span>
                         </div>
                         
                         <h1 class="hero-title">
@@ -87,39 +90,36 @@
                         </div>
 
                         <p class="hero-bio">
-                            First-year <strong>Computer Science &bull; AI &amp; ML</strong> student at <strong>NxtWave Institute of Advanced Technologies (NIAT), Jaipur</strong>. Passionate about Full-Stack Web Development (React, Django, TypeScript, Python), Machine Learning, and creative digital storytelling. Incoming <strong>Data Science Intern @ SkillCraft Technology</strong>.
+                            First-year <strong>Computer Science &bull; AI &amp; ML</strong> student at <strong>NxtWave Institute of Advanced Technologies (NIAT)</strong>. Passionate about Full-Stack Web Development (React, Django REST, TypeScript, Python), 3D Interactive Web Graphics, and Machine Learning. Incoming <strong>Data Science Intern @ SkillCraft Technology</strong>.
                         </p>
 
                         <div class="hero-cta">
-                            <a href="#about" class="btn btn-primary">
-                                <i class="fa-solid fa-user-graduate"></i> My Academic Journey
-                            </a>
-                            <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                <i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> Connect on LinkedIn
+                            <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                <i class="fa-brands fa-linkedin" style="color: #ffffff;"></i> Connect on LinkedIn
                             </a>
                             <a href="#projects" class="btn btn-secondary">
-                                <i class="fa-solid fa-code"></i> View Projects
+                                <i class="fa-brands fa-github"></i> All GitHub Repos
+                            </a>
+                            <a href="#about" class="btn btn-secondary">
+                                <i class="fa-solid fa-user-graduate"></i> Academic Profile
                             </a>
                         </div>
 
                         <div class="hero-socials">
-                            <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub Profile">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
                             <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile">
                                 <i class="fa-brands fa-linkedin-in" style="color: #0a66c2;"></i>
                             </a>
-                            <a href="mailto:ak1276054@gmail.com" class="social-icon-btn" title="Email Aman">
-                                <i class="fa-solid fa-envelope"></i>
+                            <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub Profile">
+                                <i class="fa-brands fa-github"></i>
                             </a>
-                            <span style="font-size: 0.85rem; color: var(--text-muted); margin-left: 0.5rem;">
-                                <i class="fa-solid fa-location-dot" style="color: var(--accent-cyan);"></i> Jaipur, Rajasthan, India
-                            </span>
+                            <button onclick="copyLinkedIn()" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: var(--radius-full);">
+                                <i class="fa-solid fa-copy"></i> Copy LinkedIn Link
+                            </button>
                         </div>
                     </div>
 
                     <div class="hero-visual">
-                        <div class="avatar-card-container">
+                        <div class="avatar-card-container tilt-card">
                             <div class="avatar-glow"></div>
                             
                             <div class="floating-badge badge-top-right">
@@ -128,8 +128,8 @@
                             </div>
 
                             <div class="floating-badge badge-bottom-left">
-                                <i class="fa-solid fa-briefcase" style="color: var(--accent-emerald);"></i>
-                                <span>SkillCraft Intern</span>
+                                <i class="fa-solid fa-cube" style="color: var(--accent-cyan);"></i>
+                                <span>3D Interactive Web</span>
                             </div>
 
                             <div class="avatar-card">
@@ -137,13 +137,13 @@
                                     <img src="assets/profile.jpg" alt="Aman Kumar Profile Picture" class="avatar-img">
                                 </div>
                                 <h3 class="avatar-name">Aman Kumar</h3>
-                                <p class="avatar-role">NIAT Jaipur &bull; B.Tech AI &amp; ML</p>
+                                <p class="avatar-role">NIAT &bull; B.Tech AI &amp; ML</p>
                                 
                                 <div class="avatar-tech-tags">
                                     <span class="tech-tag">React</span>
                                     <span class="tech-tag">Python</span>
                                     <span class="tech-tag">Django REST</span>
-                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">Three.js</span>
                                     <span class="tech-tag">AI/ML</span>
                                     <span class="tech-tag">PostgreSQL</span>
                                 </div>
@@ -153,18 +153,18 @@
                 </div>
 
                 <!-- Metrics Bar -->
-                <div class="stats-bar">
+                <div class="stats-bar tilt-card">
                     <div class="stat-item">
                         <div class="stat-number" data-target="2029" data-plus="false">0</div>
                         <div class="stat-label">B.Tech AI/ML (NIAT)</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="2" data-plus="true">0</div>
-                        <div class="stat-label">Hackathons Participated</div>
+                        <div class="stat-number" data-target="4" data-plus="false">0</div>
+                        <div class="stat-label">Featured GitHub Repos</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="4" data-plus="true">0</div>
-                        <div class="stat-label">AI &amp; Tech Workshops</div>
+                        <div class="stat-number" data-target="2" data-plus="true">0</div>
+                        <div class="stat-label">Hackathons Participated</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" data-target="100" data-plus="true">0</div>
@@ -184,17 +184,17 @@
                 </div>
 
                 <div class="about-grid">
-                    <div class="glass-card about-card">
+                    <div class="glass-card about-card tilt-card">
                         <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-user" style="color: var(--accent-cyan);"></i> Professional Summary</h3>
                         <p>
-                            I am <strong>Aman Kumar</strong>, a motivated first-year Computer Science / AI &amp; ML student at <strong>NxtWave Institute of Advanced Technologies (NIAT), Jaipur</strong> with a strong foundation in modern web technologies and a creative background in video/photo editing and scriptwriting.
+                            I am <strong>Aman Kumar</strong>, a motivated first-year Computer Science / AI &amp; ML student at <strong>NxtWave Institute of Advanced Technologies (NIAT)</strong> with a strong foundation in modern web technologies, full-stack architectures, and a creative background in video/photo editing and scriptwriting.
                         </p>
                         <p>
-                            An active participant in national hackathons and hands-on AI workshops, I am passionate about combining technical programming expertise with design creativity to engineer impactful software.
+                            An active participant in national hackathons and hands-on AI workshops, I am passionate about combining technical programming expertise with interactive 3D web design to engineer impactful software products.
                         </p>
                     </div>
 
-                    <div class="glass-card about-card">
+                    <div class="glass-card about-card tilt-card">
                         <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-university" style="color: var(--accent-purple);"></i> College &amp; Degree Details</h3>
                         
                         <div style="margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
@@ -205,9 +205,9 @@
                                 Artificial Intelligence &amp; Machine Learning (AI &amp; ML)
                             </div>
                             <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-                                <i class="fa-solid fa-building-columns"></i> <strong>NxtWave Institute of Advanced Technologies (NIAT)</strong>, Jaipur, Rajasthan
+                                <i class="fa-solid fa-building-columns"></i> <strong>NxtWave Institute of Advanced Technologies (NIAT)</strong>
                             </div>
-                            <div style="color: var(--accent-emerald); font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem;">
+                            <div style="color: var(--accent-emerald); font-size: 0.82rem; font-weight: 600; margin-top: 0.35rem;">
                                 <i class="fa-solid fa-calendar-days"></i> August 2025 &ndash; August 2029 (Expected)
                             </div>
                         </div>
@@ -243,8 +243,7 @@
                 </div>
 
                 <div class="skills-grid">
-                    <!-- Languages & Web -->
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-brands fa-js skill-icon" style="color: #f7df1e;"></i>
@@ -255,7 +254,7 @@
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
                     </div>
 
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-brands fa-python skill-icon" style="color: #3776ab;"></i>
@@ -266,18 +265,18 @@
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%;"></div></div>
                     </div>
 
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-brands fa-react skill-icon" style="color: #38bdf8;"></i>
-                                <span>React &amp; Material-UI</span>
+                                <span>React &amp; Three.js 3D</span>
                             </div>
                             <span class="skill-percent">92%</span>
                         </div>
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%;"></div></div>
                     </div>
 
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-solid fa-server skill-icon" style="color: #092e20;"></i>
@@ -288,7 +287,7 @@
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
                     </div>
 
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-solid fa-brain skill-icon" style="color: var(--accent-purple);"></i>
@@ -299,7 +298,7 @@
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
                     </div>
 
-                    <div class="skill-card">
+                    <div class="skill-card tilt-card">
                         <div class="skill-head">
                             <div class="skill-title-wrap">
                                 <i class="fa-solid fa-photo-film skill-icon" style="color: var(--accent-pink);"></i>
@@ -325,7 +324,7 @@
                 <div class="timeline" style="max-width: 850px;">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-card" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04);">
+                        <div class="timeline-card tilt-card" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04);">
                             <div class="timeline-date" style="color: var(--accent-emerald);">
                                 <i class="fa-solid fa-clock"></i> 1 July 2026 &ndash; 31 July 2026 (Incoming)
                             </div>
@@ -334,7 +333,7 @@
                                 <i class="fa-solid fa-building"></i> SkillCraft Technology
                             </div>
                             <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.6;">
-                                &bull; Selected for a 1-month intensive internship to gain hands-on, practical experience in data science, predictive model evaluation, and machine learning workflows.
+                                &bull; Selected for an intensive internship to gain hands-on experience in data science, predictive model evaluation, and machine learning workflows.
                             </p>
                             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
                                 <span class="tech-tag">Data Science</span>
@@ -348,85 +347,104 @@
             </div>
         </section>
 
-        <!-- Projects Section (TraveLogy, GeoSentinel, Portfolio) -->
+        <!-- Projects Section (All GitHub Repos Included!) -->
         <section id="projects">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Featured Work</div>
-                    <h2 class="section-title">Highlighted <span class="gradient-text">Projects</span></h2>
-                    <p class="section-desc">Full-stack software and machine learning applications built from scratch.</p>
+                    <div class="section-tag"><i class="fa-brands fa-github"></i> Code Repositories</div>
+                    <h2 class="section-title">All GitHub <span class="gradient-text">Projects &amp; Repos</span></h2>
+                    <p class="section-desc">Explore all repositories and software projects built by Aman Kumar.</p>
                 </div>
 
                 <div class="projects-grid">
-                    <!-- Project 1: TraveLogy (From Resume) -->
-                    <div class="glass-card project-card" style="border-color: rgba(56, 189, 248, 0.35);">
-                        <span class="project-badge" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: var(--accent-cyan);">
-                            Flagship AI Project
-                        </span>
-                        <h3 class="project-title">TraveLogy &mdash; AI-Powered Travel Diary App</h3>
-                        <p class="project-desc">
-                            Full-stack smart travel diary with live GPS trip tracking, photo/note-based journaling, analytics dashboards, and gamification streaks. Built with AI travel mode detection (walk, cycle, car, bus, metro) using Scikit-learn, Leaflet interactive maps, bookings, emergency SOS logging, and GDPR-aligned data exports.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React (TypeScript)</span>
-                            <span class="tech-tag">Django REST</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Material-UI</span>
-                            <span class="tech-tag">Leaflet</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="project-btn">
-                                <i class="fa-brands fa-github"></i> GitHub Repo
-                            </a>
-                            <a href="#contact" class="project-btn" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: var(--accent-cyan);">
-                                <i class="fa-solid fa-circle-info"></i> Project Details
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: GeoSentinel (Smart India Hackathon) -->
-                    <div class="glass-card project-card">
+                    <!-- Repo 1: sih-project -->
+                    <div class="glass-card project-card tilt-card" style="border-color: rgba(245, 158, 11, 0.35);">
                         <span class="project-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border-color: var(--accent-amber);">
-                            Hackathon Innovation
+                            Smart India Hackathon
                         </span>
-                        <h3 class="project-title">GeoSentinel &mdash; 3D Geological &amp; Mine Safety</h3>
+                        <h3 class="project-title">sih-project &mdash; GeoSentinel 3D Platform</h3>
                         <p class="project-desc">
                             Mission-critical safety platform combining Three.js 3D subsurface strata visualizers with ESP32 IoT sensor telemetry (vibration, heat, seismic shifts), React 19 real-time telemetry streaming, and automated hazard compliance reporting.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">React 19</span>
-                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">Three.js 3D</span>
                             <span class="tech-tag">ESP32 IoT</span>
                             <span class="tech-tag">Tailwind v4</span>
                             <span class="tech-tag">Recharts</span>
                         </div>
                         <div class="project-actions">
                             <a href="https://github.com/amankr-55/sih-project" target="_blank" rel="noopener noreferrer" class="project-btn">
-                                <i class="fa-brands fa-github"></i> GitHub Repo
+                                <i class="fa-brands fa-github"></i> github.com/amankr-55/sih-project
                             </a>
                         </div>
                     </div>
 
-                    <!-- Project 3: Developer Portfolio & Hub -->
-                    <div class="glass-card project-card">
-                        <span class="project-badge">Open Source</span>
-                        <h3 class="project-title">Personal Developer Portfolio &amp; Hub</h3>
+                    <!-- Repo 2: TraveLogy -->
+                    <div class="glass-card project-card tilt-card" style="border-color: rgba(56, 189, 248, 0.35);">
+                        <span class="project-badge" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: var(--accent-cyan);">
+                            AI Flagship App
+                        </span>
+                        <h3 class="project-title">TraveLogy &mdash; AI Travel Diary Platform</h3>
                         <p class="project-desc">
-                            Ultra-modern glassmorphic portfolio website with dynamic canvas particle constellation, dark/light theme switcher, animated LinkedIn post feed, and automated GitHub Pages deployment.
+                            Full-stack smart travel diary with live GPS trip tracking, photo/note journaling, analytics dashboards, gamification, and Scikit-learn AI travel mode &amp; trip purpose prediction.
                         </p>
                         <div class="project-tech">
+                            <span class="tech-tag">React (TypeScript)</span>
+                            <span class="tech-tag">Django REST</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Leaflet</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                <i class="fa-brands fa-github"></i> github.com/amankr-55
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Repo 3: MY-Portfolio -->
+                    <div class="glass-card project-card tilt-card" style="border-color: rgba(168, 85, 247, 0.35);">
+                        <span class="project-badge" style="background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border-color: var(--accent-purple);">
+                            Live Portfolio
+                        </span>
+                        <h3 class="project-title">MY-Portfolio &mdash; 3D Glassmorphic Hub</h3>
+                        <p class="project-desc">
+                            Interactive 3D Three.js developer portfolio with 3D tilt perspective cards, dark/light theme switcher, animated LinkedIn post feed, and automated GitHub Pages workflow.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Three.js</span>
                             <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3 Glassmorphism</span>
+                            <span class="tech-tag">CSS3 3D</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">GitHub Actions</span>
                         </div>
                         <div class="project-actions">
                             <a href="https://github.com/amankr-55/MY-Portfolio" target="_blank" rel="noopener noreferrer" class="project-btn">
-                                <i class="fa-brands fa-github"></i> GitHub Repo
+                                <i class="fa-brands fa-github"></i> github.com/amankr-55/MY-Portfolio
                             </a>
-                            <a href="#hero" class="project-btn">
-                                <i class="fa-solid fa-play"></i> Live Preview
+                            <a href="#hero" class="project-btn" style="background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border-color: var(--accent-purple);">
+                                <i class="fa-solid fa-play"></i> Live View
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Repo 4: amankr55 -->
+                    <div class="glass-card project-card tilt-card">
+                        <span class="project-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border-color: var(--accent-emerald);">
+                            Profile Hub
+                        </span>
+                        <h3 class="project-title">amankr55 &mdash; Developer Configs &amp; Hub</h3>
+                        <p class="project-desc">
+                            Aman Kumar's GitHub special repository containing developer configurations, workflow automations, and GitHub profile README integrations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Markdown</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">Developer Identity</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/amankr-55/amankr55" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                <i class="fa-brands fa-github"></i> github.com/amankr-55/amankr55
                             </a>
                         </div>
                     </div>
@@ -444,52 +462,52 @@
                 </div>
 
                 <div class="about-highlights" style="max-width: 900px; margin: 0 auto; grid-template-columns: 1fr 1fr;">
-                    <div class="glass-card" style="padding: 1.5rem;">
+                    <div class="glass-card tilt-card" style="padding: 1.6rem;">
                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <i class="fa-solid fa-trophy" style="font-size: 1.8rem; color: var(--accent-amber); margin-top: 0.2rem;"></i>
+                            <i class="fa-solid fa-trophy" style="font-size: 2rem; color: var(--accent-amber); margin-top: 0.2rem;"></i>
                             <div>
-                                <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">IdeaHarvest &ndash; VGU Internal Hackathon 2025</h4>
-                                <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600;">Team RudraX &bull; October 2025</div>
-                                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+                                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">IdeaHarvest &ndash; VGU Hackathon 2025</h4>
+                                <div style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">Team RudraX &bull; October 2025</div>
+                                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem;">
                                     Participated with Team RudraX, presenting an innovative digital solution under the theme "Direct to Consumer (D2C)".
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card" style="padding: 1.5rem;">
+                    <div class="glass-card tilt-card" style="padding: 1.6rem;">
                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <i class="fa-solid fa-certificate" style="font-size: 1.8rem; color: var(--accent-purple); margin-top: 0.2rem;"></i>
+                            <i class="fa-solid fa-certificate" style="font-size: 2rem; color: var(--accent-purple); margin-top: 0.2rem;"></i>
                             <div>
-                                <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">Meta Mind Hackathon 2025</h4>
-                                <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600;">Certificate of Achievement &bull; November 2025</div>
-                                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+                                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Meta Mind Hackathon 2025</h4>
+                                <div style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">Certificate of Achievement &bull; November 2025</div>
+                                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem;">
                                     Awarded Certificate of Achievement for contributing as a participant in intensive software sprints.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card" style="padding: 1.5rem;">
+                    <div class="glass-card tilt-card" style="padding: 1.6rem;">
                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <i class="fa-solid fa-robot" style="font-size: 1.8rem; color: var(--accent-cyan); margin-top: 0.2rem;"></i>
+                            <i class="fa-solid fa-robot" style="font-size: 2rem; color: var(--accent-cyan); margin-top: 0.2rem;"></i>
                             <div>
-                                <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">AI Agents 201 Hands-On Workshop</h4>
-                                <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600;">NIAT &bull; April 2026</div>
-                                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+                                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">AI Agents 201 Hands-On Workshop</h4>
+                                <div style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">NIAT &bull; April 2026</div>
+                                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem;">
                                     Completed practical training in building autonomous AI agents and AI-driven solutions for real-world problem solving.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card" style="padding: 1.5rem;">
+                    <div class="glass-card tilt-card" style="padding: 1.6rem;">
                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <i class="fa-solid fa-hand" style="font-size: 1.8rem; color: var(--accent-emerald); margin-top: 0.2rem;"></i>
+                            <i class="fa-solid fa-hand" style="font-size: 2rem; color: var(--accent-emerald); margin-top: 0.2rem;"></i>
                             <div>
-                                <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">Gesture Tech Workshop</h4>
-                                <div style="color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600;">NIAT Robotics &amp; Advanced Tech &bull; April 2026</div>
-                                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+                                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem;">Gesture Tech Workshop</h4>
+                                <div style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700;">NIAT Robotics Team &bull; April 2026</div>
+                                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem;">
                                     Attended hands-on workshop exploring sensor interfacing and gesture-based human-computer interaction technologies.
                                 </p>
                             </div>
@@ -509,7 +527,7 @@
                 </div>
 
                 <div class="posts-grid" id="linkedin-posts-container">
-                    <!-- Dynamic LinkedIn Posts with images loaded from posts-data.js -->
+                    <!-- Dynamic LinkedIn Posts loaded from posts-data.js -->
                 </div>
 
                 <div style="text-align: center; margin-top: 3rem;">
@@ -520,79 +538,41 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Dedicated LinkedIn Connect Section (100% LinkedIn - No Gmail!) -->
         <section id="contact">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Let's Connect</div>
-                    <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                    <p class="section-desc">Reach out for software engineering internships, collaborative AI/Web projects, or hackathon teams.</p>
+                    <div class="section-tag"><i class="fa-brands fa-linkedin"></i> Direct Contact</div>
+                    <h2 class="section-title">Message Me on <span class="gradient-text">LinkedIn</span></h2>
+                    <p class="section-desc">Have a software engineering opportunity, project idea, or collaboration? Reach out directly via LinkedIn!</p>
                 </div>
 
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="contact-method-card">
-                            <div class="contact-icon-wrap">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>LinkedIn Connect</h4>
-                                <p>linkedin.com/in/aman-kumar-71944037b</p>
-                            </div>
-                        </a>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="linkedin-connect-hero-box tilt-card">
+                        <i class="fa-brands fa-linkedin linkedin-big-icon"></i>
+                        <h3 style="font-size: 2rem; margin-bottom: 0.75rem;">Let's Connect &amp; Chat on LinkedIn</h3>
+                        <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2rem; line-height: 1.7;">
+                            For any inquiries, collaborations, tech discussions, or opportunities, send me a direct message on LinkedIn. I am active and respond promptly!
+                        </p>
 
-                        <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="contact-method-card">
-                            <div class="contact-icon-wrap">
-                                <i class="fa-brands fa-github"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>GitHub Profile</h4>
-                                <p>github.com/amankr-55</p>
-                            </div>
-                        </a>
-
-                        <div class="contact-method-card" style="cursor: pointer;" onclick="copyEmail('ak1276054@gmail.com')">
-                            <div class="contact-icon-wrap">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email Address</h4>
-                                <p>ak1276054@gmail.com <span style="font-size: 0.75rem; color: var(--accent-cyan);">(Click to copy)</span></p>
-                            </div>
-                        </div>
-
-                        <div class="contact-method-card">
-                            <div class="contact-icon-wrap">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Location</h4>
-                                <p>Jaipur, Rajasthan, India</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card">
-                        <form class="contact-form" id="contact-form">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" class="form-input" placeholder="e.g. Rahul Sharma" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" class="form-input" placeholder="e.g. rahul@example.com" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" class="form-textarea" placeholder="Hello Aman, I'd like to discuss..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                                <i class="fa-solid fa-paper-plane"></i> Send Message
+                        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
+                                <i class="fa-brands fa-linkedin"></i> Open LinkedIn &amp; Send Message
+                            </a>
+                            <button onclick="copyLinkedIn()" class="btn btn-secondary" style="padding: 1rem 1.8rem; font-size: 1.05rem;">
+                                <i class="fa-solid fa-link"></i> Copy Profile Link
                             </button>
-                        </form>
+                        </div>
+
+                        <div class="linkedin-quick-msg-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> Quick Connect URL:</span>
+                                <span style="font-size: 0.78rem; color: var(--text-muted);">linkedin.com/in/aman-kumar-71944037b</span>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--text-secondary);">
+                                Click the button above to start a conversation with Aman Kumar directly on LinkedIn.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -613,15 +593,15 @@
                 </div>
 
                 <div class="footer-copy">
-                    &copy; 2026 Aman Kumar. B.Tech AI &amp; ML Student @ NIAT Jaipur.
+                    &copy; 2026 Aman Kumar. B.Tech AI &amp; ML Student @ NIAT.
                 </div>
 
                 <div class="hero-socials" style="margin-top: 0;">
-                    <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
                     <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
                         <i class="fa-brands fa-linkedin-in" style="color: #0a66c2;"></i>
+                    </a>
+                    <a href="https://github.com/amankr-55" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
                     </a>
                 </div>
             </div>
