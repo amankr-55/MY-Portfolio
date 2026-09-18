@@ -471,12 +471,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .avatar-img-wrap {
     position: relative;
-    width: 140px;
-    height: 140px;
+    width: 175px;
+    height: 175px;
     margin: 0 auto 1.25rem;
     border-radius: 50%;
     padding: 5px;
-    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    background: linear-gradient(135deg, #f59e0b, #ec4899, var(--accent-cyan));
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
 }
 
 .avatar-img {
@@ -485,6 +486,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     object-fit: cover;
     background: var(--bg-secondary);
+    display: block;
 }
 
 .avatar-name {
