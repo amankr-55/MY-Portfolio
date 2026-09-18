@@ -96,10 +96,10 @@ function initTypewriter() {
     if (!textElement) return;
 
     const phrases = [
-        "Full Stack Developer 💻",
-        "React & Vite Specialist ⚡",
-        "Smart India Hackathon (SIH) Contender 🏆",
-        "Creative Web Problem Solver 🚀"
+        "Computer Science Engineering Student 🎓",
+        "Aspiring Full-Stack Web Developer 💻",
+        "React & Modern JavaScript Enthusiast ⚡",
+        "Smart India Hackathon Participant 🏆"
     ];
 
     let phraseIndex = 0;
@@ -122,7 +122,7 @@ function initTypewriter() {
 
         if (!isDeleting && charIndex === currentPhrase.length) {
             isDeleting = true;
-            typingSpeed = 2000; // Pause at end
+            typingSpeed = 2000;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -136,7 +136,7 @@ function initTypewriter() {
 }
 
 /* ==========================================================================
-   LinkedIn Posts Renderer
+   LinkedIn Posts Renderer with Real Image Post Support
    ========================================================================== */
 function renderLinkedInPosts() {
     const container = document.getElementById('linkedin-posts-container');
@@ -144,13 +144,14 @@ function renderLinkedInPosts() {
 
     container.innerHTML = linkedinPosts.map(post => {
         let mediaHtml = '';
-        if (post.mediaType === 'code' && post.codeSnippet) {
+        if (post.postImage) {
+            mediaHtml = `
+                <div style="margin-bottom: 1.25rem; border-radius: var(--radius-md); overflow: hidden; max-height: 200px; border: 1px solid var(--border-color);">
+                    <img src="${post.postImage}" alt="LinkedIn Post Attachment" style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+            `;
+        } else if (post.mediaType === 'code' && post.codeSnippet) {
             mediaHtml = `<pre class="linkedin-code-box"><code>${escapeHtml(post.codeSnippet)}</code></pre>`;
-        } else if (post.badgeText) {
-            mediaHtml = `<div class="highlight-box" style="margin-bottom: 1.25rem; background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.3);">
-                <i class="fa-solid fa-sparkles" style="color: var(--accent-cyan);"></i>
-                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan);">${post.badgeText}</span>
-            </div>`;
         }
 
         const hashtagsHtml = post.hashtags.map(tag => `<span class="linkedin-tag-item">${tag}</span>`).join(' ');
@@ -159,7 +160,7 @@ function renderLinkedInPosts() {
             <div class="glass-card linkedin-card">
                 <div class="linkedin-header">
                     <div class="linkedin-user">
-                        <img src="${post.avatar}" alt="${post.author}" class="linkedin-avatar">
+                        <img src="${post.avatar}" onerror="this.src='${post.fallbackAvatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80'}'" alt="${post.author}" class="linkedin-avatar">
                         <div class="linkedin-meta">
                             <h4>${post.author}</h4>
                             <p>${post.role}</p>
@@ -245,7 +246,6 @@ function initMobileNav() {
         }
     });
 
-    // Close mobile nav when clicking any nav link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
@@ -331,11 +331,10 @@ function initContactForm() {
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
 
-        // Open Mail Client
         const mailtoUrl = `mailto:amankumar.tech@outlook.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
         window.location.href = mailtoUrl;
 
-        showToast("Thanks for reaching out! Your email client is opening...");
+        showToast("Thanks for reaching out! Opening your email client...");
         form.reset();
     });
 }
