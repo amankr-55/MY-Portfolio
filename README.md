@@ -1,6 +1,13 @@
-# 🚀 Aman Kumar - Developer Portfolio & LinkedIn Showcase
+# 🚀 Aman Kumar - Developer Portfolio & 3D Showcase
 
-An ultra-modern, glassmorphism-styled personal developer portfolio built with semantic HTML5, CSS3 variables, interactive Canvas particles, and dynamic LinkedIn highlights.
+[![Live Demo](https://img.shields.io/badge/Live%20Website-Visit%20Portfolio-0ea5e9?style=for-the-badge&logo=googlechrome&logoColor=white)](https://amankr-55.github.io/MY-Portfolio/)
+[![GitHub](https://img.shields.io/badge/GitHub-amankr--55-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/amankr-55/MY-Portfolio)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Aman%20Kumar-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aman-kumar-71944037b/)
+[![CGTrader](https://img.shields.io/badge/CGTrader-aiveridox-orange?style=for-the-badge&logo=blender&logoColor=white)](https://www.cgtrader.com/designers/aiveridox)
+
+### 🌐 Live URL: **[https://amankr-55.github.io/MY-Portfolio/](https://amankr-55.github.io/MY-Portfolio/)**
+
+An ultra-modern, 3D WebGL (Three.js) & glassmorphism-styled personal developer portfolio for Aman Kumar (B.Tech AI & ML Student @ NIAT Jaipur, 3D Blender Artist on CGTrader `@aiveridox`, Full-Stack Web Developer).
 
 ---
 
