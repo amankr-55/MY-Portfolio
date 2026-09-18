@@ -124,7 +124,13 @@ function initThreeJSScene() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    // Smooth Mouse Parallax Physics
+    // Scroll Position Tracking for 3D continuous animation
+    let scrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+    });
+
+    // Smooth Parallax and Animation Loop
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -145,36 +151,37 @@ function initThreeJSScene() {
 
     function animate() {
         const elapsedTime = clock.getElapsedTime();
+        const scrollFactor = scrollY * 0.003;
 
         // Smooth Lerp Camera Parallax
         targetX += (mouseX - targetX) * 0.04;
         targetY += (mouseY - targetY) * 0.04;
 
-        camera.position.x = targetX * 4;
-        camera.position.y = -targetY * 3;
-        camera.lookAt(0, 0, 0);
+        camera.position.x = targetX * 3;
+        camera.position.y = -targetY * 2;
 
-        // 3D Object Rotations & Floating Motion
-        torusKnot.rotation.x = elapsedTime * 0.18 + targetY * 0.4;
-        torusKnot.rotation.y = elapsedTime * 0.22 + targetX * 0.4;
-        torusKnot.position.y = 2 + Math.sin(elapsedTime * 0.8) * 1.5;
+        // Continuous 3D Object Rotations & Scroll Dynamics on LEFT Side
+        torusKnot.rotation.x = elapsedTime * 0.25 + scrollFactor + targetY * 0.4;
+        torusKnot.rotation.y = elapsedTime * 0.30 + scrollFactor * 0.8 + targetX * 0.4;
+        torusKnot.position.y = 3 + Math.sin(elapsedTime * 0.9 + scrollFactor) * 2;
 
-        ico.rotation.x = -elapsedTime * 0.15;
-        ico.rotation.y = elapsedTime * 0.2 + targetX * 0.2;
-        ico.position.y = -6 + Math.cos(elapsedTime * 0.7) * 1.2;
+        ico.rotation.x = -elapsedTime * 0.20 + scrollFactor * 1.2;
+        ico.rotation.y = elapsedTime * 0.25 + scrollFactor * 0.6;
+        ico.position.y = -8 + Math.cos(elapsedTime * 0.8 + scrollFactor) * 1.8;
 
-        dodeca.rotation.x = elapsedTime * 0.2;
-        dodeca.rotation.z = elapsedTime * 0.15;
-        dodeca.position.y = -14 + Math.sin(elapsedTime * 0.9) * 1.4;
+        dodeca.rotation.x = elapsedTime * 0.28 + scrollFactor;
+        dodeca.rotation.z = elapsedTime * 0.22 + scrollFactor * 0.5;
+        dodeca.position.y = -14 + Math.sin(elapsedTime * 1.1 + scrollFactor) * 2;
 
-        octa.rotation.y = elapsedTime * 0.25;
-        octa.rotation.x = elapsedTime * 0.15;
-        octa.position.y = 14 + Math.cos(elapsedTime * 0.6) * 1.3;
+        octa.rotation.y = elapsedTime * 0.35 + scrollFactor;
+        octa.rotation.x = elapsedTime * 0.22 + scrollFactor * 0.7;
+        octa.position.y = 12 + Math.cos(elapsedTime * 0.7 + scrollFactor) * 1.8;
 
-        gridPlane.position.z = -15 + Math.sin(elapsedTime * 0.3) * 2;
+        gridPlane.rotation.z = scrollFactor * 0.3;
+        gridPlane.position.z = -15 + Math.sin(elapsedTime * 0.4) * 2;
 
-        particlesMesh.rotation.y = -elapsedTime * 0.03 + targetX * 0.15;
-        particlesMesh.rotation.x = targetY * 0.1;
+        particlesMesh.rotation.y = -elapsedTime * 0.05 + scrollFactor * 0.4 + targetX * 0.15;
+        particlesMesh.rotation.x = targetY * 0.1 + scrollFactor * 0.2;
 
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
