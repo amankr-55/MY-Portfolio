@@ -87,36 +87,41 @@ body {
     opacity: 0.8;
 }
 
-/* Background Profile Watermark Backdrop */
+/* Full Entire Website Background with Aman's Photo */
 .bg-profile-backdrop {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 60vw;
-    max-width: 800px;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background-image: radial-gradient(circle at center, rgba(7, 10, 19, 0.25) 0%, var(--bg-primary) 75%), url('assets/profile.jpg');
+    background-image: 
+        linear-gradient(135deg, rgba(7, 10, 19, 0.76) 0%, rgba(13, 19, 34, 0.65) 50%, rgba(7, 10, 19, 0.82) 100%),
+        radial-gradient(circle at 60% 35%, rgba(56, 189, 248, 0.15) 0%, rgba(7, 10, 19, 0.55) 75%),
+        url('assets/profile.jpg');
     background-size: cover;
-    background-position: center 25%;
+    background-position: center 20%;
     background-repeat: no-repeat;
-    opacity: 0.18;
-    filter: blur(1px) contrast(1.15);
+    background-attachment: fixed;
+    opacity: 0.90;
+    filter: contrast(1.12) brightness(0.92);
     z-index: 0;
     pointer-events: none;
-    mask-image: radial-gradient(circle at 60% 35%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%);
-    -webkit-mask-image: radial-gradient(circle at 60% 35%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%);
-    transition: opacity 0.4s ease;
-    animation: pulseBackdrop 12s ease-in-out infinite alternate;
+    transition: all 0.5s ease;
+    animation: pulseBackdrop 16s ease-in-out infinite alternate;
 }
 
 @keyframes pulseBackdrop {
-    0% { transform: scale(1); opacity: 0.16; }
-    100% { transform: scale(1.05); opacity: 0.24; }
+    0% { transform: scale(1); filter: contrast(1.12) brightness(0.92); }
+    100% { transform: scale(1.04); filter: contrast(1.18) brightness(0.98); }
 }
 
 [data-theme="light"] .bg-profile-backdrop {
-    opacity: 0.10;
-    filter: grayscale(20%) blur(1px);
+    background-image: 
+        linear-gradient(135deg, rgba(248, 250, 252, 0.84) 0%, rgba(255, 255, 255, 0.76) 50%, rgba(241, 245, 249, 0.88) 100%),
+        radial-gradient(circle at 60% 35%, rgba(14, 165, 233, 0.15) 0%, rgba(255, 255, 255, 0.65) 75%),
+        url('assets/profile.jpg');
+    opacity: 0.82;
+    filter: contrast(1.05) brightness(1);
 }
 
 /* Glow Orbs in Background */

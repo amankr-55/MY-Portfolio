@@ -12,73 +12,119 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   Interactive 3D Background with Three.js
+   Interactive 3D Background with Three.js (Rich 3D WebGL World)
    ========================================================================== */
 function initThreeJSScene() {
     const container = document.getElementById('three-canvas-container');
     if (!container) return;
 
     if (typeof THREE === 'undefined') {
-        console.warn('Three.js not loaded, fallback to canvas');
+        console.warn('Three.js not loaded, fallback to CSS 3D');
         return;
     }
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 30;
+    const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 32);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.innerHTML = '';
     container.appendChild(renderer.domElement);
 
-    // 1. Floating 3D Geometric Torus Knot Wireframe
-    const geometry = new THREE.TorusKnotGeometry(8, 2.2, 120, 16);
-    const material = new THREE.MeshBasicMaterial({
+    // 1. Floating 3D Geometric Torus Knot (Cyan Cyber Wireframe)
+    const torusGeo = new THREE.TorusKnotGeometry(9, 2.4, 140, 20);
+    const torusMat = new THREE.MeshBasicMaterial({
         color: 0x38bdf8,
         wireframe: true,
         transparent: true,
-        opacity: 0.18
+        opacity: 0.35
     });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    torusKnot.position.set(15, 0, -10);
+    const torusKnot = new THREE.Mesh(torusGeo, torusMat);
+    torusKnot.position.set(16, 2, -10);
     scene.add(torusKnot);
 
-    // 2. Floating 3D Icosahedron Core
-    const icoGeo = new THREE.IcosahedronGeometry(6, 1);
+    // 2. Floating 3D Icosahedron Core (Purple Neon)
+    const icoGeo = new THREE.IcosahedronGeometry(7, 1);
     const icoMat = new THREE.MeshBasicMaterial({
         color: 0xa855f7,
         wireframe: true,
         transparent: true,
-        opacity: 0.22
+        opacity: 0.38
     });
     const ico = new THREE.Mesh(icoGeo, icoMat);
-    ico.position.set(-18, -8, -15);
+    ico.position.set(-18, -6, -14);
     scene.add(ico);
 
-    // 3. 3D Particle Starfield
-    const particlesCount = 350;
-    const posArray = new Float32Array(particlesCount * 3);
+    // 3. Floating 3D Dodecahedron (Golden Amber)
+    const dodecaGeo = new THREE.DodecahedronGeometry(5, 0);
+    const dodecaMat = new THREE.MeshBasicMaterial({
+        color: 0xf59e0b,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.32
+    });
+    const dodeca = new THREE.Mesh(dodecaGeo, dodecaMat);
+    dodeca.position.set(14, -14, -8);
+    scene.add(dodeca);
 
-    for (let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 80;
+    // 4. Floating 3D Octahedron (Pink Cyber Star)
+    const octaGeo = new THREE.OctahedronGeometry(4, 0);
+    const octaMat = new THREE.MeshBasicMaterial({
+        color: 0xec4899,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+    });
+    const octa = new THREE.Mesh(octaGeo, octaMat);
+    octa.position.set(-12, 14, -12);
+    scene.add(octa);
+
+    // 5. 3D Cyber Wireframe Ground Grid Plane (Perspective Horizon)
+    const gridGeo = new THREE.PlaneGeometry(120, 120, 30, 30);
+    const gridMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.12
+    });
+    const gridPlane = new THREE.Mesh(gridGeo, gridMat);
+    gridPlane.rotation.x = -Math.PI / 2 + 0.3;
+    gridPlane.position.set(0, -22, -15);
+    scene.add(gridPlane);
+
+    // 6. 3D Glowing Particle Starfield & Nebula Dust
+    const particlesCount = 700;
+    const posArray = new Float32Array(particlesCount * 3);
+    const scaleArray = new Float32Array(particlesCount);
+
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+        posArray[i] = (Math.random() - 0.5) * 110;
+        posArray[i + 1] = (Math.random() - 0.5) * 110;
+        posArray[i + 2] = (Math.random() - 0.5) * 90;
+        scaleArray[i / 3] = Math.random();
     }
 
     const particlesGeometry = new THREE.BufferGeometry();
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.25,
+        size: 0.35,
         color: 0x38bdf8,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.75,
         blending: THREE.AdditiveBlending
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // Mouse Parallax Interaction
+    // 7. Dynamic 3D Lights tracking mouse
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+
+    // Smooth Mouse Parallax Physics
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -100,16 +146,34 @@ function initThreeJSScene() {
     function animate() {
         const elapsedTime = clock.getElapsedTime();
 
-        targetX += (mouseX - targetX) * 0.05;
-        targetY += (mouseY - targetY) * 0.05;
+        // Smooth Lerp Camera Parallax
+        targetX += (mouseX - targetX) * 0.04;
+        targetY += (mouseY - targetY) * 0.04;
 
-        torusKnot.rotation.x = elapsedTime * 0.15 + targetY * 0.3;
-        torusKnot.rotation.y = elapsedTime * 0.2 + targetX * 0.3;
+        camera.position.x = targetX * 4;
+        camera.position.y = -targetY * 3;
+        camera.lookAt(0, 0, 0);
 
-        ico.rotation.x = -elapsedTime * 0.12;
-        ico.rotation.y = elapsedTime * 0.18;
+        // 3D Object Rotations & Floating Motion
+        torusKnot.rotation.x = elapsedTime * 0.18 + targetY * 0.4;
+        torusKnot.rotation.y = elapsedTime * 0.22 + targetX * 0.4;
+        torusKnot.position.y = 2 + Math.sin(elapsedTime * 0.8) * 1.5;
 
-        particlesMesh.rotation.y = -elapsedTime * 0.04 + targetX * 0.1;
+        ico.rotation.x = -elapsedTime * 0.15;
+        ico.rotation.y = elapsedTime * 0.2 + targetX * 0.2;
+        ico.position.y = -6 + Math.cos(elapsedTime * 0.7) * 1.2;
+
+        dodeca.rotation.x = elapsedTime * 0.2;
+        dodeca.rotation.z = elapsedTime * 0.15;
+        dodeca.position.y = -14 + Math.sin(elapsedTime * 0.9) * 1.4;
+
+        octa.rotation.y = elapsedTime * 0.25;
+        octa.rotation.x = elapsedTime * 0.15;
+        octa.position.y = 14 + Math.cos(elapsedTime * 0.6) * 1.3;
+
+        gridPlane.position.z = -15 + Math.sin(elapsedTime * 0.3) * 2;
+
+        particlesMesh.rotation.y = -elapsedTime * 0.03 + targetX * 0.15;
         particlesMesh.rotation.x = targetY * 0.1;
 
         renderer.render(scene, camera);
@@ -120,12 +184,15 @@ function initThreeJSScene() {
 }
 
 /* ==========================================================================
-   3D Tilt Card Effects (Perspective Cursor Tracker)
+   3D Tilt & Interactive Depth Tracker (High-Performance 3D Effect)
    ========================================================================== */
 function init3DTiltEffects() {
-    const cards = document.querySelectorAll('.glass-card, .avatar-card');
+    const cards = document.querySelectorAll('.glass-card, .avatar-card, .skill-card, .highlight-box, .stat-item, .project-card, .achievement-card, .cgtrader-card, .contact-card');
 
     cards.forEach(card => {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease';
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -134,14 +201,15 @@ function init3DTiltEffects() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
+            const rotateX = ((y - centerY) / centerY) * -12;
+            const rotateY = ((x - centerX) / centerX) * 12;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(12px) translateY(-6px)`;
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease';
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) translateY(0px)';
         });
     });
 }
