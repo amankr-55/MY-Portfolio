@@ -18,7 +18,6 @@ function initThreeJSScene() {
     const container = document.getElementById('three-canvas-container');
     if (!container) return;
 
-    // Check if Three.js is loaded
     if (typeof THREE === 'undefined') {
         console.warn('Three.js not loaded, fallback to canvas');
         return;
@@ -148,18 +147,18 @@ function init3DTiltEffects() {
 }
 
 /* ==========================================================================
-   Typewriter Effect
+   Typewriter Effect (Including 3D Blender Artist & CGTrader)
    ========================================================================== */
 function initTypewriter() {
     const textElement = document.getElementById('typewriter');
     if (!textElement) return;
 
     const phrases = [
-        "B.Tech AI & ML Student @ NIAT Jaipur 🎓",
-        "Aspiring Software Developer & AI Builder 🚀",
+        "3D Blender Artist & CGTrader Designer 🎨",
+        "B.Tech AI & ML Student @ NIAT 🎓",
         "Full-Stack Web Developer (React + Django) 💻",
         "Incoming Data Science Intern @ SkillCraft 📊",
-        "Creative Video & Photo Editor ✨"
+        "3D WebGL & Creative Media Designer ✨"
     ];
 
     let phraseIndex = 0;
@@ -207,7 +206,7 @@ function renderLinkedInPosts() {
         if (post.postImage) {
             mediaHtml = `
                 <div style="margin-bottom: 1.25rem; border-radius: var(--radius-md); overflow: hidden; max-height: 200px; border: 1px solid var(--border-color);">
-                    <img src="${post.postImage}" alt="LinkedIn Post Attachment" style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="${post.postImage}" alt="Post Attachment" style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
             `;
         }
@@ -244,7 +243,7 @@ function renderLinkedInPosts() {
                         <span>${post.likes} reactions &bull; ${post.comments} comments</span>
                     </div>
                     <a href="${post.postUrl}" target="_blank" rel="noopener noreferrer" class="linkedin-link-btn">
-                        View Post <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        View Details <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
             </div>
@@ -383,7 +382,7 @@ function showToast(message) {
         toast.className = 'toast-msg';
         document.body.appendChild(toast);
     }
-    toast.innerHTML = `<i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> <span>${message}</span>`;
+    toast.innerHTML = `<i class="fa-solid fa-cube" style="color: var(--accent-cyan);"></i> <span>${message}</span>`;
     toast.classList.add('show');
 
     setTimeout(() => {

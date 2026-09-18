@@ -1,21 +1,21 @@
 // LinkedIn Posts & Highlights Data for Aman Kumar
-// Grounded 100% in Aman's Official Resume & LinkedIn Profile
+// Grounded 100% in Aman's Official Resume, LinkedIn & CGTrader 3D Profile
 
 const linkedinPosts = [
     {
         id: 1,
         author: "Aman Kumar",
-        role: "B.Tech AI & ML Student | NxtWave Institute of Advanced Technologies (NIAT)",
+        role: "B.Tech AI & ML Student | 3D Blender Artist & CGTrader Designer",
         avatar: "assets/profile.jpg",
         fallbackAvatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
-        date: "Hackathon Milestone",
-        tag: "IdeaHarvest Hackathon",
-        content: "Thrilled to participate in IdeaHarvest 2025 with Team RudraX! 🚀 Presented an innovative D2C digital solution and collaborated on rapid technical prototyping. Always energized by hackathon environments where tech meets innovation.",
-        hashtags: ["#IdeaHarvest", "#TeamRudraX", "#Hackathon", "#Innovation", "#AIandML", "#NIAT", "#StudentDeveloper"],
-        likes: 74,
-        comments: 19,
-        postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
-        postImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80",
+        date: "3D Art & Modeling",
+        tag: "Blender 3D & CGTrader",
+        content: "Exploring the fusion of 3D Computer Graphics, Blender modeling, and WebGL! Check out my 3D design portfolio and digital assets on CGTrader (@aiveridox). Passionate about crafting immersive 3D models, textures, and visual experiences. 🎨✨",
+        hashtags: ["#Blender3D", "#CGTrader", "#3DModeling", "#3DArt", "#aiveridox", "#ComputerGraphics", "#DigitalDesign"],
+        likes: 91,
+        comments: 27,
+        postUrl: "https://www.cgtrader.com/designers/aiveridox",
+        postImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
         mediaType: "image"
     },
     {
