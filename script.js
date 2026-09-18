@@ -33,65 +33,65 @@ function initThreeJSScene() {
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
 
-    // 1. Floating 3D Geometric Torus Knot (Cyan Cyber Wireframe)
-    const torusGeo = new THREE.TorusKnotGeometry(9, 2.4, 140, 20);
+    // 1. Floating 3D Geometric Torus Knot (Cyan Cyber Wireframe on Left Side)
+    const torusGeo = new THREE.TorusKnotGeometry(8, 2.2, 140, 20);
     const torusMat = new THREE.MeshBasicMaterial({
         color: 0x38bdf8,
         wireframe: true,
         transparent: true,
-        opacity: 0.35
+        opacity: 0.45
     });
     const torusKnot = new THREE.Mesh(torusGeo, torusMat);
-    torusKnot.position.set(16, 2, -10);
+    torusKnot.position.set(-16, 3, -6);
     scene.add(torusKnot);
 
-    // 2. Floating 3D Icosahedron Core (Purple Neon)
-    const icoGeo = new THREE.IcosahedronGeometry(7, 1);
+    // 2. Floating 3D Icosahedron Core (Purple Neon on Left Bottom)
+    const icoGeo = new THREE.IcosahedronGeometry(6.5, 1);
     const icoMat = new THREE.MeshBasicMaterial({
         color: 0xa855f7,
         wireframe: true,
         transparent: true,
-        opacity: 0.38
+        opacity: 0.42
     });
     const ico = new THREE.Mesh(icoGeo, icoMat);
-    ico.position.set(-18, -6, -14);
+    ico.position.set(-14, -8, -10);
     scene.add(ico);
 
-    // 3. Floating 3D Dodecahedron (Golden Amber)
-    const dodecaGeo = new THREE.DodecahedronGeometry(5, 0);
+    // 3. Floating 3D Dodecahedron (Golden Amber on Left-Center)
+    const dodecaGeo = new THREE.DodecahedronGeometry(4.5, 0);
     const dodecaMat = new THREE.MeshBasicMaterial({
         color: 0xf59e0b,
         wireframe: true,
         transparent: true,
-        opacity: 0.32
+        opacity: 0.38
     });
     const dodeca = new THREE.Mesh(dodecaGeo, dodecaMat);
-    dodeca.position.set(14, -14, -8);
+    dodeca.position.set(-8, -14, -8);
     scene.add(dodeca);
 
-    // 4. Floating 3D Octahedron (Pink Cyber Star)
+    // 4. Floating 3D Octahedron (Pink Cyber Star on Left Top)
     const octaGeo = new THREE.OctahedronGeometry(4, 0);
     const octaMat = new THREE.MeshBasicMaterial({
         color: 0xec4899,
         wireframe: true,
         transparent: true,
-        opacity: 0.35
+        opacity: 0.40
     });
     const octa = new THREE.Mesh(octaGeo, octaMat);
-    octa.position.set(-12, 14, -12);
+    octa.position.set(-18, 12, -10);
     scene.add(octa);
 
-    // 5. 3D Cyber Wireframe Ground Grid Plane (Perspective Horizon)
-    const gridGeo = new THREE.PlaneGeometry(120, 120, 30, 30);
+    // 5. 3D Cyber Wireframe Ground Grid Plane (Perspective Horizon on Left-Center)
+    const gridGeo = new THREE.PlaneGeometry(130, 130, 32, 32);
     const gridMat = new THREE.MeshBasicMaterial({
         color: 0x38bdf8,
         wireframe: true,
         transparent: true,
-        opacity: 0.12
+        opacity: 0.15
     });
     const gridPlane = new THREE.Mesh(gridGeo, gridMat);
     gridPlane.rotation.x = -Math.PI / 2 + 0.3;
-    gridPlane.position.set(0, -22, -15);
+    gridPlane.position.set(-10, -22, -15);
     scene.add(gridPlane);
 
     // 6. 3D Glowing Particle Starfield & Nebula Dust
