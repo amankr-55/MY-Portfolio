@@ -1,68 +1,54 @@
-// LinkedIn Posts & Highlights Data
-// Aap yahan apne naye LinkedIn posts ke links, dates, captions aur hashtags easily add/update kar sakte hain!
+// LinkedIn Posts & Highlights Data for Aman Kumar
+// Grounded in deep analysis of GitHub (GeoSentinel SIH Dashboard) & LinkedIn Profile
 
 const linkedinPosts = [
     {
         id: 1,
         author: "Aman Kumar",
-        role: "Full Stack Developer | React & JavaScript Enthusiast",
+        role: "Full Stack Developer | 3D Web & IoT Innovator",
         avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=AmanKumar",
-        date: "Internship Milestone",
-        tag: "Software Internship",
-        content: "Excited to share my journey as a Software / Web Development Intern! 💼 Working on real-world web architecture, collaborating with seasoned engineers, and translating designs into scalable, high-performance web applications. Hands-on industry experience is pushing my skills to the next level.",
-        hashtags: ["#InternshipJourney", "#WebDevelopment", "#SoftwareEngineering", "#ReactJS", "#ProfessionalGrowth", "#TechCareer"],
-        likes: 64,
+        date: "Smart India Hackathon",
+        tag: "SIH & Innovation",
+        content: "Thrilled to present GeoSentinel — our Smart India Hackathon (SIH) project! 🚀 A mission-critical 3D Geological & Mine Safety monitoring platform combining ESP32 IoT sensors with a real-time Three.js 3D Strata visualizer and React 19 dashboard. Helping protect lives through proactive telemetry and automated disaster response.",
+        hashtags: ["#SmartIndiaHackathon", "#SIH2024", "#GeoSentinel", "#ThreeJS", "#IoT", "#React19", "#Innovation", "#TechForGood"],
+        likes: 68,
         comments: 18,
         postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
-        mediaType: "badge",
-        badgeText: "💼 Active Software Development Intern"
+        mediaType: "code",
+        codeSnippet: `// GeoSentinel Real-Time Telemetry & 3D Strata Engine
+const GeoSentinel = {
+  hardware: ['ESP32 Microcontroller', 'Vibration & Temp Sensors'],
+  frontend: ['React 19', 'Three.js 3D Visualizer', 'Tailwind CSS v4'],
+  analytics: ['Recharts Telemetry', 'jsPDF Automated Hazard Logs'],
+  impact: 'Proactive worker safety in mining environments'
+};`
     },
     {
         id: 2,
         author: "Aman Kumar",
-        role: "Full Stack Developer | React & JavaScript Enthusiast",
+        role: "Full Stack Developer | 3D Web & IoT Innovator",
         avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=AmanKumar",
-        date: "Project Showcase",
-        tag: "Green ThinkerX / Sustainability",
-        content: "Proud to present our project for Green ThinkerZ / ThinkerX! 🌱 A modern digital initiative promoting sustainability, clean technology solutions, and impactful digital experiences. Check out our repository and live demo.",
-        hashtags: ["#GreenThinkerX", "#Sustainability", "#CleanTech", "#React", "#JavaScript", "#Innovation", "#OpenSource"],
-        likes: 56,
+        date: "Engineering Insights",
+        tag: "3D & Performance",
+        content: "How we tackled high-frequency sensor data rendering in the browser: Combining Three.js 3D rendering with React 19 concurrent features and Vite build optimization to render spatial mine grids and live vibrations without dropping a frame! ⚡",
+        hashtags: ["#ThreeJS", "#React19", "#WebDev", "#Performance", "#Vite", "#DataViz", "#FrontendEngineering"],
+        likes: 47,
         comments: 14,
         postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
-        mediaType: "code",
-        codeSnippet: `// Green ThinkerX Sustainable Web Platform
-const GreenThinkerX = {
-  mission: 'Sustainable Development & Clean Tech Innovation',
-  stack: ['React', 'JavaScript', 'Tailwind', 'REST APIs'],
-  impact: 'Eco-conscious digital solutions'
-};`
+        mediaType: "badge",
+        badgeText: "🏆 60 FPS 3D Strata Rendering & Real-Time Sensor Telemetry"
     },
     {
         id: 3,
         author: "Aman Kumar",
-        role: "Full Stack Developer | React & JavaScript Enthusiast",
+        role: "Full Stack Developer | 3D Web & IoT Innovator",
         avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=AmanKumar",
-        date: "Hackathon Highlight",
-        tag: "Smart India Hackathon (SIH)",
-        content: "Thrilled to share our Smart India Hackathon (SIH) journey! 🚀 Built an impactful digital solution leveraging React, Vite, and modern web architectures. Solving national-level problem statements with team collaboration.",
-        hashtags: ["#SmartIndiaHackathon", "#SIH", "#ReactJS", "#Innovation", "#TechForGood"],
-        likes: 48,
-        comments: 12,
-        postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
-        mediaType: "badge",
-        badgeText: "🏆 SIH Hackathon Contender"
-    },
-    {
-        id: 4,
-        author: "Aman Kumar",
-        role: "Full Stack Developer | React & JavaScript Enthusiast",
-        avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=AmanKumar",
-        date: "Networking & Community",
-        tag: "Connect & Collaborate",
-        content: "Open to exciting software engineering opportunities, tech collaborations, and innovative open-source projects. Feel free to connect with me on LinkedIn! 🤝",
-        hashtags: ["#OpenToWork", "#Networking", "#TechCommunity", "#SoftwareEngineering"],
-        likes: 52,
-        comments: 16,
+        date: "Career & Opportunities",
+        tag: "Open To Collaborate",
+        content: "Passionate about full-stack engineering, 3D web visualizations, and building solutions with measurable real-world impact. Always open to discussing new opportunities, hackathons, and engineering collaborations! Let's connect on LinkedIn. 🤝",
+        hashtags: ["#OpenToWork", "#FullStackDeveloper", "#SoftwareEngineering", "#Networking", "#TechCommunity"],
+        likes: 56,
+        comments: 21,
         postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
         mediaType: "connect",
         badgeText: "💼 Connect with Aman on LinkedIn"
