@@ -125,6 +125,35 @@ function initThreeJSScene() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
+    // 8. Dedicated 3D Interactive Mouse Follower Hologram (Crystal & Gyroscope)
+    const cursor3DGroup = new THREE.Group();
+
+    const cursorDiamondGeo = new THREE.OctahedronGeometry(1.4, 0);
+    const cursorDiamondMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.85
+    });
+    const cursorDiamond = new THREE.Mesh(cursorDiamondGeo, cursorDiamondMat);
+    cursor3DGroup.add(cursorDiamond);
+
+    const cursorRingGeo = new THREE.TorusGeometry(2.1, 0.06, 16, 48);
+    const cursorRingMat = new THREE.MeshBasicMaterial({
+        color: 0xa855f7,
+        wireframe: false,
+        transparent: true,
+        opacity: 0.70
+    });
+    const cursor3DRing = new THREE.Mesh(cursorRingGeo, cursorRingMat);
+    cursor3DGroup.add(cursor3DRing);
+
+    const cursorPointLight = new THREE.PointLight(0x38bdf8, 2.5, 40);
+    cursor3DGroup.add(cursorPointLight);
+
+    cursor3DGroup.position.set(0, 0, 8);
+    scene.add(cursor3DGroup);
+
     // Scroll Position Tracking for 3D continuous animation
     let scrollY = window.scrollY;
     window.addEventListener('scroll', () => {
@@ -180,6 +209,17 @@ function initThreeJSScene() {
 
         gridPlane.rotation.z = scrollFactor * 0.3;
         gridPlane.position.z = -15 + Math.sin(elapsedTime * 0.4) * 2;
+
+        // 3D Cursor Mesh World Position Tracking & Gyroscope Spin
+        const cursorWorldX = mouseX * 22;
+        const cursorWorldY = -mouseY * 13;
+        cursor3DGroup.position.x += (cursorWorldX - cursor3DGroup.position.x) * 0.12;
+        cursor3DGroup.position.y += (cursorWorldY - cursor3DGroup.position.y) * 0.12;
+        cursorDiamond.rotation.x = elapsedTime * 2.2 + (targetY * 2);
+        cursorDiamond.rotation.y = elapsedTime * 2.8 + (targetX * 2);
+        cursorDiamond.rotation.z = elapsedTime * 1.5;
+        cursor3DRing.rotation.x = elapsedTime * 1.4 + (targetX * 1.5);
+        cursor3DRing.rotation.y = elapsedTime * 1.8 + (targetY * 1.5);
 
         particlesMesh.rotation.y = -elapsedTime * 0.05 + scrollFactor * 0.4 + targetX * 0.15;
         particlesMesh.rotation.x = targetY * 0.1 + scrollFactor * 0.2;
@@ -500,6 +540,7 @@ function init3DCursor() {
     let prevMouseY = mouseY;
     let velX = 0;
     let velY = 0;
+    let isClicking = false;
 
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
@@ -508,6 +549,45 @@ function init3DCursor() {
         dot.style.top = `${mouseY}px`;
     });
 
+    window.addEventListener('mousedown', (e) => {
+        isClicking = true;
+        createClickRipple(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('mouseup', () => {
+        isClicking = false;
+    });
+
+    function createClickRipple(x, y) {
+        const ripple = document.createElement('div');
+        ripple.style.position = 'fixed';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        ripple.style.width = '10px';
+        ripple.style.height = '10px';
+        ripple.style.borderRadius = '50%';
+        ripple.style.border = '2px solid #38bdf8';
+        ripple.style.boxShadow = '0 0 15px #38bdf8, inset 0 0 10px #a855f7';
+        ripple.style.transform = 'translate(-50%, -50%) scale(1)';
+        ripple.style.pointerEvents = 'none';
+        ripple.style.zIndex = '9996';
+        ripple.style.transition = 'transform 0.45s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 0.45s ease';
+        ripple.style.opacity = '0.9';
+
+        document.body.appendChild(ripple);
+
+        requestAnimationFrame(() => {
+            ripple.style.transform = 'translate(-50%, -50%) scale(7.5)';
+            ripple.style.opacity = '0';
+        });
+
+        setTimeout(() => {
+            if (ripple && ripple.parentNode) {
+                ripple.parentNode.removeChild(ripple);
+            }
+        }, 500);
+    }
+
     const interactables = document.querySelectorAll('a, button, .glass-card, .skill-card, .tilt-card, .theme-btn, .social-icon-btn, input, textarea');
     interactables.forEach(el => {
         el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
@@ -515,23 +595,24 @@ function init3DCursor() {
     });
 
     function renderCursor() {
-        velX = (mouseX - prevMouseX) * 0.8;
-        velY = (mouseY - prevMouseY) * 0.8;
+        velX = (mouseX - prevMouseX) * 0.85;
+        velY = (mouseY - prevMouseY) * 0.85;
         prevMouseX = mouseX;
         prevMouseY = mouseY;
 
-        ringX += (mouseX - ringX) * 0.20;
-        ringY += (mouseY - ringY) * 0.20;
+        ringX += (mouseX - ringX) * 0.22;
+        ringY += (mouseY - ringY) * 0.22;
         glowX += (mouseX - glowX) * 0.10;
         glowY += (mouseY - glowY) * 0.10;
 
-        const rotX = Math.max(Math.min(velY * 2.8, 50), -50);
-        const rotY = Math.max(Math.min(-velX * 2.8, 50), -50);
-        const rotZ = Math.max(Math.min(velX * 1.8, 35), -35);
+        const rotX = Math.max(Math.min(velY * 3.2, 55), -55);
+        const rotY = Math.max(Math.min(-velX * 3.2, 55), -55);
+        const rotZ = Math.max(Math.min(velX * 2.2, 40), -40);
+        const scaleVal = isClicking ? 0.75 : 1;
 
         ring.style.left = `${ringX}px`;
         ring.style.top = `${ringY}px`;
-        ring.style.transform = `translate(-50%, -50%) perspective(600px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+        ring.style.transform = `translate(-50%, -50%) perspective(700px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg) scale3d(${scaleVal}, ${scaleVal}, ${scaleVal})`;
 
         glow.style.left = `${glowX}px`;
         glow.style.top = `${glowY}px`;
