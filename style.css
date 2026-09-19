@@ -70,24 +70,22 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
     transition: background-color 0.4s ease, color 0.4s ease;
-    perspective: 1200px;
 }
 
-/* 3D Three.js WebGL Canvas (Full Screen Viewport, 3D Rendered on Left Half) */
+/* 3D Three.js WebGL Canvas (Permanent Fixed Viewport Background - Left Side) */
 #three-canvas-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     opacity: 1;
 }
 
-/* Right Side Top-to-Bottom Background Image (100% Fixed, Bright & Crisp on Right Half) */
+/* Right Side Permanent Fixed Viewport Background Photo (Top to Bottom across Entire Website) */
 .bg-profile-backdrop {
     position: fixed;
     top: 0;
@@ -100,7 +98,7 @@ body {
     background-repeat: no-repeat;
     opacity: 0.95;
     filter: contrast(1.15) brightness(1.08) saturate(1.18);
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     border-left: 1px solid rgba(56, 189, 248, 0.25);
     box-shadow: -20px 0 50px rgba(0, 0, 0, 0.45);
@@ -117,7 +115,7 @@ body {
     position: fixed;
     border-radius: 50%;
     filter: blur(120px);
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     opacity: 0.40;
     animation: floatOrb 16s ease-in-out infinite alternate;
