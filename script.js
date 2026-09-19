@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initThreeJSScene();
     init3DTiltEffects();
+    init3DCursor();
     initTypewriter();
     renderLinkedInPosts();
     initThemeToggle();
@@ -470,3 +471,73 @@ window.copyLinkedIn = function() {
         showToast("LinkedIn Profile Link copied to clipboard!");
     });
 };
+
+/* ==========================================================================
+   Interactive 3D Mouse Cursor Engine (3D Velocity Tilt, Holographic Ring & Glow)
+   ========================================================================== */
+function init3DCursor() {
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    const glow = document.getElementById('cursor-glow');
+
+    if (!dot || !ring || !glow) return;
+
+    if (window.matchMedia('(pointer: coarse)').matches) {
+        dot.style.display = 'none';
+        ring.style.display = 'none';
+        glow.style.display = 'none';
+        return;
+    }
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+    let glowX = mouseX;
+    let glowY = mouseY;
+
+    let prevMouseX = mouseX;
+    let prevMouseY = mouseY;
+    let velX = 0;
+    let velY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+    });
+
+    const interactables = document.querySelectorAll('a, button, .glass-card, .skill-card, .tilt-card, .theme-btn, .social-icon-btn, input, textarea');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+
+    function renderCursor() {
+        velX = (mouseX - prevMouseX) * 0.8;
+        velY = (mouseY - prevMouseY) * 0.8;
+        prevMouseX = mouseX;
+        prevMouseY = mouseY;
+
+        ringX += (mouseX - ringX) * 0.20;
+        ringY += (mouseY - ringY) * 0.20;
+        glowX += (mouseX - glowX) * 0.10;
+        glowY += (mouseY - glowY) * 0.10;
+
+        const rotX = Math.max(Math.min(velY * 2.8, 50), -50);
+        const rotY = Math.max(Math.min(-velX * 2.8, 50), -50);
+        const rotZ = Math.max(Math.min(velX * 1.8, 35), -35);
+
+        ring.style.left = `${ringX}px`;
+        ring.style.top = `${ringY}px`;
+        ring.style.transform = `translate(-50%, -50%) perspective(600px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+
+        glow.style.left = `${glowX}px`;
+        glow.style.top = `${glowY}px`;
+
+        requestAnimationFrame(renderCursor);
+    }
+
+    renderCursor();
+}
