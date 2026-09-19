@@ -82,50 +82,129 @@ function initThreeJSScene() {
     octa.position.set(-18, 12, -10);
     scene.add(octa);
 
-    // 5. 3D Cyber Wireframe Ground Grid Plane (Perspective Horizon on Left-Center)
-    const gridGeo = new THREE.PlaneGeometry(130, 130, 32, 32);
+    /* =========================================================================
+       RIGHT SIDE 3D OBJECTS (Positioned directly behind & around profile image)
+       ========================================================================= */
+    // 5. Right 3D Gyroscope Triple Ring System (Hologram Behind Image)
+    const rightGyroGroup = new THREE.Group();
+    const gyroRing1 = new THREE.Mesh(
+        new THREE.TorusGeometry(8.5, 0.12, 16, 64),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.65 })
+    );
+    const gyroRing2 = new THREE.Mesh(
+        new THREE.TorusGeometry(6.2, 0.10, 16, 64),
+        new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.60 })
+    );
+    const gyroRing3 = new THREE.Mesh(
+        new THREE.TorusGeometry(4.2, 0.08, 16, 64),
+        new THREE.MeshBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.55 })
+    );
+    rightGyroGroup.add(gyroRing1);
+    rightGyroGroup.add(gyroRing2);
+    rightGyroGroup.add(gyroRing3);
+    rightGyroGroup.position.set(16, 2, -6);
+    scene.add(rightGyroGroup);
+
+    // 6. Right 3D Double Helix / Cyber DNA (Vertical Stream Behind Image)
+    const helixGroup = new THREE.Group();
+    const helixCount = 48;
+    const helixSpheres = [];
+    for (let i = 0; i < helixCount; i++) {
+        const t = (i / helixCount) * Math.PI * 4;
+        const yPos = (i - helixCount / 2) * 0.9;
+        const radius = 3.5;
+
+        const sphere1 = new THREE.Mesh(
+            new THREE.SphereGeometry(0.22, 8, 8),
+            new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.85 })
+        );
+        sphere1.position.set(Math.cos(t) * radius, yPos, Math.sin(t) * radius);
+        helixGroup.add(sphere1);
+
+        const sphere2 = new THREE.Mesh(
+            new THREE.SphereGeometry(0.22, 8, 8),
+            new THREE.MeshBasicMaterial({ color: 0xec4899, transparent: true, opacity: 0.85 })
+        );
+        sphere2.position.set(Math.cos(t + Math.PI) * radius, yPos, Math.sin(t + Math.PI) * radius);
+        helixGroup.add(sphere2);
+
+        // Connection rung
+        const rungGeo = new THREE.BufferGeometry().setFromPoints([sphere1.position, sphere2.position]);
+        const rungMat = new THREE.LineBasicMaterial({ color: 0x818cf8, transparent: true, opacity: 0.35 });
+        const rung = new THREE.Line(rungGeo, rungMat);
+        helixGroup.add(rung);
+    }
+    helixGroup.position.set(19, 0, -10);
+    scene.add(helixGroup);
+
+    // 7. Right 3D Polyhedral Crystals (Floating Behind Image)
+    const rightIco = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(5.5, 1),
+        new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true, transparent: true, opacity: 0.45 })
+    );
+    rightIco.position.set(14, 13, -8);
+    scene.add(rightIco);
+
+    const rightTorusKnot = new THREE.Mesh(
+        new THREE.TorusKnotGeometry(5.5, 1.6, 100, 16),
+        new THREE.MeshBasicMaterial({ color: 0x10b981, wireframe: true, transparent: true, opacity: 0.40 })
+    );
+    rightTorusKnot.position.set(16, -13, -9);
+    scene.add(rightTorusKnot);
+
+    const rightOcta = new THREE.Mesh(
+        new THREE.OctahedronGeometry(4, 0),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.45 })
+    );
+    rightOcta.position.set(10, -5, -5);
+    scene.add(rightOcta);
+
+    // 8. 3D Cyber Wireframe Ground Grid Plane (Perspective Horizon Across Full Viewport)
+    const gridGeo = new THREE.PlaneGeometry(240, 180, 48, 48);
     const gridMat = new THREE.MeshBasicMaterial({
         color: 0x38bdf8,
         wireframe: true,
         transparent: true,
-        opacity: 0.15
+        opacity: 0.18
     });
     const gridPlane = new THREE.Mesh(gridGeo, gridMat);
     gridPlane.rotation.x = -Math.PI / 2 + 0.3;
-    gridPlane.position.set(-10, -22, -15);
+    gridPlane.position.set(0, -22, -15);
     scene.add(gridPlane);
 
-    // 6. 3D Glowing Particle Starfield & Nebula Dust
-    const particlesCount = 700;
+    // 9. 3D Glowing Particle Starfield & Nebula Dust (Full Width)
+    const particlesCount = 1200;
     const posArray = new Float32Array(particlesCount * 3);
-    const scaleArray = new Float32Array(particlesCount);
 
     for (let i = 0; i < particlesCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 110;
-        posArray[i + 1] = (Math.random() - 0.5) * 110;
-        posArray[i + 2] = (Math.random() - 0.5) * 90;
-        scaleArray[i / 3] = Math.random();
+        posArray[i] = (Math.random() - 0.5) * 180;
+        posArray[i + 1] = (Math.random() - 0.5) * 140;
+        posArray[i + 2] = (Math.random() - 0.5) * 110;
     }
 
     const particlesGeometry = new THREE.BufferGeometry();
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.35,
+        size: 0.38,
         color: 0x38bdf8,
         transparent: true,
-        opacity: 0.75,
+        opacity: 0.80,
         blending: THREE.AdditiveBlending
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // 7. Dynamic 3D Lights tracking mouse
+    // 10. Dynamic 3D Lights tracking mouse
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    // 8. Dedicated 3D Interactive Mouse Follower Hologram (Crystal & Gyroscope)
+    const rightPointLight = new THREE.PointLight(0xa855f7, 3, 50);
+    rightPointLight.position.set(16, 4, -4);
+    scene.add(rightPointLight);
+
+    // 11. Dedicated 3D Interactive Mouse Follower Hologram (Crystal & Gyroscope)
     const cursor3DGroup = new THREE.Group();
 
     const cursorDiamondGeo = new THREE.OctahedronGeometry(1.4, 0);
@@ -209,6 +288,30 @@ function initThreeJSScene() {
 
         gridPlane.rotation.z = scrollFactor * 0.3;
         gridPlane.position.z = -15 + Math.sin(elapsedTime * 0.4) * 2;
+
+        // Continuous 3D Object Rotations & Scroll Dynamics on RIGHT Side (Behind & around photo)
+        gyroRing1.rotation.x = elapsedTime * 0.45 + scrollFactor * 0.8;
+        gyroRing1.rotation.y = elapsedTime * 0.35 + (targetX * 0.5);
+        gyroRing2.rotation.y = -elapsedTime * 0.55 + scrollFactor * 0.6;
+        gyroRing2.rotation.z = elapsedTime * 0.40 + (targetY * 0.5);
+        gyroRing3.rotation.x = elapsedTime * 0.65;
+        gyroRing3.rotation.z = -elapsedTime * 0.50;
+        rightGyroGroup.position.y = 2 + Math.sin(elapsedTime * 0.8 + scrollFactor) * 2;
+
+        helixGroup.rotation.y = elapsedTime * 0.75 + scrollFactor * 1.5;
+        helixGroup.position.y = Math.cos(elapsedTime * 0.6 + scrollFactor) * 2.5;
+
+        rightIco.rotation.x = elapsedTime * 0.30 + scrollFactor;
+        rightIco.rotation.y = elapsedTime * 0.25;
+        rightIco.position.y = 13 + Math.sin(elapsedTime * 0.9 + scrollFactor) * 1.8;
+
+        rightTorusKnot.rotation.x = -elapsedTime * 0.22 + scrollFactor * 0.7;
+        rightTorusKnot.rotation.z = elapsedTime * 0.30;
+        rightTorusKnot.position.y = -13 + Math.cos(elapsedTime * 0.8 + scrollFactor) * 2;
+
+        rightOcta.rotation.y = elapsedTime * 0.40 + scrollFactor;
+        rightOcta.rotation.x = elapsedTime * 0.30;
+        rightOcta.position.y = -5 + Math.sin(elapsedTime * 1.1 + scrollFactor) * 1.5;
 
         // 3D Cursor Mesh World Position Tracking & Gyroscope Spin
         const cursorWorldX = mouseX * 22;
