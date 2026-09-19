@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initScrollSpy();
     initCounters();
+    initServiceForm();
 });
 
 /* ==========================================================================
@@ -614,6 +615,147 @@ window.copyLinkedIn = function() {
         showToast("LinkedIn Profile Link copied to clipboard!");
     });
 };
+
+/* ==========================================================================
+   Interactive Service Request & Confidential Email Relay
+   ========================================================================== */
+window.selectService = function(serviceName) {
+    const hiddenInput = document.getElementById('selected-service-input');
+    const chips = document.querySelectorAll('.service-chip');
+    
+    if (hiddenInput) {
+        hiddenInput.value = serviceName;
+    }
+
+    chips.forEach(chip => {
+        if (chip.getAttribute('data-service') === serviceName) {
+            chip.classList.add('active');
+        } else {
+            chip.classList.remove('active');
+        }
+    });
+
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    showToast(`Selected Service: ${serviceName}`);
+};
+
+function initServiceForm() {
+    const form = document.getElementById('service-request-form');
+    const chips = document.querySelectorAll('.service-chip');
+    const hiddenInput = document.getElementById('selected-service-input');
+    const statusBox = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitBtnText = document.getElementById('submit-btn-text');
+
+    if (!form) return;
+
+    // Service chip selection
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const selectedVal = chip.getAttribute('data-service');
+            if (hiddenInput) hiddenInput.value = selectedVal;
+        });
+    });
+
+    // Form submission handler
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = form.querySelector('[name="name"]').value.trim();
+        const email = form.querySelector('[name="email"]').value.trim();
+        const phone = form.querySelector('[name="phone"]').value.trim() || 'Not Provided';
+        const budget = form.querySelector('[name="budget"]').value.trim() || 'Flexible';
+        const service = hiddenInput ? hiddenInput.value : 'General Inquiry';
+        const message = form.querySelector('[name="message"]').value.trim();
+
+        if (!name || !email || !message) {
+            if (statusBox) {
+                statusBox.className = 'form-status-box error';
+                statusBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <span>Please fill in all required fields (Name, Email, Message).</span>`;
+                statusBox.style.display = 'flex';
+            }
+            return;
+        }
+
+        // Set Loading State
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitBtnText) submitBtnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Request...';
+        if (statusBox) statusBox.style.display = 'none';
+
+        try {
+            // Private encrypted relay endpoint for confidential inbox delivery (ak1276054@gmail.com)
+            const _endpoint = 'https://formsubmit.co/ajax/' + atob('YWsxMjc2MDU0QGdtYWlsLmNvbQ==');
+
+            const payload = {
+                "Client Name": name,
+                "Client Email": email,
+                "Phone / WhatsApp": phone,
+                "Requested Service": service,
+                "Budget & Timeline": budget,
+                "Project Message": message,
+                "_subject": `🎯 Portfolio Service Request: ${service} (from ${name})`,
+                "_template": "table"
+            };
+
+            const response = await fetch(_endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (response.ok || result.success === "true" || result.message) {
+                if (statusBox) {
+                    statusBox.className = 'form-status-box success';
+                    statusBox.innerHTML = `
+                        <i class="fa-solid fa-circle-check" style="font-size: 1.4rem;"></i>
+                        <div>
+                            <strong>Service Request Sent Successfully!</strong><br>
+                            Thank you <em>${name}</em>! Your inquiry for <strong>${service}</strong> has been routed directly to Aman Kumar's inbox. Aman will reply to <em>${email}</em> promptly!
+                        </div>
+                    `;
+                    statusBox.style.display = 'flex';
+                }
+                form.reset();
+                if (chips.length > 0) {
+                    chips.forEach(c => c.classList.remove('active'));
+                    chips[0].classList.add('active');
+                    if (hiddenInput) hiddenInput.value = chips[0].getAttribute('data-service');
+                }
+                showToast("✨ Project request sent successfully!");
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
+        } catch (err) {
+            console.error('Submission error:', err);
+            if (statusBox) {
+                statusBox.className = 'form-status-box error';
+                statusBox.innerHTML = `
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.3rem;"></i>
+                    <div>
+                        <strong>Connection Note:</strong> Your request could not be sent automatically.<br>
+                        Please message Aman Kumar directly on 
+                        <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">LinkedIn here</a>.
+                    </div>
+                `;
+                statusBox.style.display = 'flex';
+            }
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitBtnText) submitBtnText.innerHTML = 'Submit Service Request';
+        }
+    });
+}
 
 /* ==========================================================================
    Interactive 3D Mouse Cursor Engine (3D Velocity Tilt, Holographic Ring & Glow)

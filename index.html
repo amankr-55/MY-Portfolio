@@ -67,11 +67,12 @@
                 <li><a href="#hero" class="active">Home</a></li>
                 <li><a href="#about">About &amp; College</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#3d-cgtrader">3D Blender</a></li>
                 <li><a href="#projects">GitHub Repos</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#linkedin-posts">Posts</a></li>
-                <li><a href="#contact">Connect</a></li>
+                <li><a href="#contact">Hire &amp; Connect</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -332,6 +333,151 @@
                             <span class="skill-percent">95%</span>
                         </div>
                         <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Provided Section -->
+        <section id="services" style="padding-top: 4rem;">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag"><i class="fa-solid fa-briefcase"></i> Professional Services</div>
+                    <h2 class="section-title">What Services <span class="gradient-text">I Provide</span></h2>
+                    <p class="section-desc">From 3D Blender modeling to full-stack web development and AI media creation — hire me for your next creative or technical project.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- 1. 3D Modeling & Asset Creation -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-3d">
+                                <i class="fa-solid fa-cube"></i>
+                            </div>
+                            <h3 class="service-title">3D Modeling &amp; Assets</h3>
+                            <p class="service-desc">
+                                Custom 3D modeling in Blender, game-ready low/high-poly assets, hard-surface props, PBR texturing, photorealistic rendering, and CGTrader commercial quality.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Blender 3D</span>
+                                <span class="service-tag-item">PBR Texturing</span>
+                                <span class="service-tag-item">Game Assets</span>
+                                <span class="service-tag-item">CGTrader</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('3D Modeling & Assets')">
+                            <i class="fa-solid fa-paper-plane"></i> Request 3D Modeling
+                        </a>
+                    </div>
+
+                    <!-- 2. Story Writing & Scriptwriting -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-story">
+                                <i class="fa-solid fa-feather-pointed"></i>
+                            </div>
+                            <h3 class="service-title">Story &amp; Script Writing</h3>
+                            <p class="service-desc">
+                                Creative storytelling, video scripts, YouTube narrative writing, fictional lore, game worldbuilding, engaging dialogues, and content copywriting.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Storytelling</span>
+                                <span class="service-tag-item">Video Scripts</span>
+                                <span class="service-tag-item">Game Lore</span>
+                                <span class="service-tag-item">Creative Writing</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('Story & Script Writing')">
+                            <i class="fa-solid fa-paper-plane"></i> Request Story Writing
+                        </a>
+                    </div>
+
+                    <!-- 3. Website Making & Development -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-web">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                            <h3 class="service-title">Website Making &amp; Dev</h3>
+                            <p class="service-desc">
+                                Responsive modern web applications, portfolios, business websites, React &amp; Django architectures, interactive Three.js 3D WebGL animations, and clean UI/UX.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Full-Stack</span>
+                                <span class="service-tag-item">React &amp; Django</span>
+                                <span class="service-tag-item">Three.js 3D</span>
+                                <span class="service-tag-item">Responsive UI</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('Website Making & Dev')">
+                            <i class="fa-solid fa-paper-plane"></i> Request Web Development
+                        </a>
+                    </div>
+
+                    <!-- 4. Video Editing & Post-Production -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-video">
+                                <i class="fa-solid fa-film"></i>
+                            </div>
+                            <h3 class="service-title">Video Editing &amp; Reels</h3>
+                            <p class="service-desc">
+                                High-retention cinematic video editing, YouTube long-form, viral Instagram Reels/Shorts, color grading, sound design, transitions, and motion typography.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Premiere Pro</span>
+                                <span class="service-tag-item">After Effects</span>
+                                <span class="service-tag-item">Cinematic Cuts</span>
+                                <span class="service-tag-item">Sound FX</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('Video Editing & Reels')">
+                            <i class="fa-solid fa-paper-plane"></i> Request Video Editing
+                        </a>
+                    </div>
+
+                    <!-- 5. AI Image & Video Creation & Editing -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-ai">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h3 class="service-title">AI Image &amp; Video Creation</h3>
+                            <p class="service-desc">
+                                Generative AI workflows, photorealistic Midjourney &amp; Stable Diffusion art, AI video synthesis (Runway, Pika), AI face animation, upscaling, and prompt engineering.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Generative AI</span>
+                                <span class="service-tag-item">Midjourney</span>
+                                <span class="service-tag-item">AI Video Gen</span>
+                                <span class="service-tag-item">Prompt Tuning</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('AI Image & Video Creation')">
+                            <i class="fa-solid fa-paper-plane"></i> Request AI Creation
+                        </a>
+                    </div>
+
+                    <!-- 6. Graphic Designing & Branding -->
+                    <div class="service-card tilt-card">
+                        <div>
+                            <div class="service-icon-box icon-box-design">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h3 class="service-title">Graphic Designing &amp; Brand</h3>
+                            <p class="service-desc">
+                                Distinctive visual branding, logos, high-CTR YouTube thumbnails, promotional posters, social media banners, vector illustrations, and UI mockups.
+                            </p>
+                            <div class="service-tags">
+                                <span class="service-tag-item">Brand Identity</span>
+                                <span class="service-tag-item">Thumbnails</span>
+                                <span class="service-tag-item">Posters &amp; Logos</span>
+                                <span class="service-tag-item">UI Design</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="service-action-btn" onclick="selectService('Graphic Designing & Brand')">
+                            <i class="fa-solid fa-paper-plane"></i> Request Graphic Design
+                        </a>
                     </div>
                 </div>
             </div>
@@ -622,41 +768,130 @@
             </div>
         </section>
 
-        <!-- Dedicated LinkedIn Connect Section (100% LinkedIn - No Gmail!) -->
+        <!-- Service Request & Direct Contact Section (Confidential Inbox Routing) -->
         <section id="contact">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag"><i class="fa-brands fa-linkedin"></i> Direct Contact</div>
-                    <h2 class="section-title">Message Me on <span class="gradient-text">LinkedIn</span></h2>
-                    <p class="section-desc">Have a 3D Blender modeling project, software engineering opportunity, or collaboration? Reach out directly via LinkedIn!</p>
+                    <div class="section-tag"><i class="fa-solid fa-envelope-open-text"></i> Direct Inquiry &amp; Hire</div>
+                    <h2 class="section-title">Request a Service or <span class="gradient-text">Hire Me</span></h2>
+                    <p class="section-desc">Fill in the details below to submit your project request directly. Your message will be routed securely to my private inbox!</p>
                 </div>
 
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="linkedin-connect-hero-box tilt-card">
-                        <i class="fa-brands fa-linkedin linkedin-big-icon"></i>
-                        <h3 style="font-size: 2rem; margin-bottom: 0.75rem;">Let's Connect &amp; Chat on LinkedIn</h3>
-                        <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2rem; line-height: 1.7;">
-                            For any inquiries, 3D blender commissions, tech discussions, or opportunities, send me a direct message on LinkedIn. I am active and respond promptly!
+                <div class="contact-grid">
+                    <!-- Left: Direct Info & LinkedIn Hub -->
+                    <div class="contact-info-panel tilt-card">
+                        <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                            <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); display: grid; place-items: center; font-size: 1.4rem; color: #fff;">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.35rem; font-weight: 800;">Let's Work Together</h3>
+                                <p style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600;">Available for Freelance &amp; Projects</p>
+                            </div>
+                        </div>
+
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.75rem;">
+                            Whether you need 3D Blender assets, full-stack website development, video editing, story/script writing, AI media generation, or graphic design, feel free to send a request. I review every message promptly.
                         </p>
 
-                        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                            <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
-                                <i class="fa-brands fa-linkedin"></i> Open LinkedIn &amp; Send Message
-                            </a>
-                            <a href="https://www.cgtrader.com/designers/aiveridox" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 1rem 1.8rem; font-size: 1.05rem; border-color: #f59e0b; color: #f59e0b;">
-                                <i class="fa-solid fa-cube"></i> View CGTrader Profile
-                            </a>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                            <div style="display: flex; align-items: center; gap: 0.85rem;">
+                                <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); display: grid; place-items: center; color: var(--accent-cyan);">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 0.92rem; font-weight: 700;">Confidential &amp; Direct</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">Messages reach my inbox securely and privately.</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 0.85rem;">
+                                <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); display: grid; place-items: center; color: var(--accent-emerald);">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 0.92rem; font-weight: 700;">Fast Response Time</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">Responses delivered directly to your provided email.</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="linkedin-quick-msg-card">
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> Quick Connect URL:</span>
-                                <span style="font-size: 0.78rem; color: var(--text-muted);">linkedin.com/in/aman-kumar-71944037b</span>
+                                <span style="font-size: 0.85rem; font-weight: 700; color: #0a66c2;"><i class="fa-brands fa-linkedin"></i> Prefer LinkedIn?</span>
                             </div>
-                            <p style="font-size: 0.88rem; color: var(--text-secondary);">
-                                Click the button above to start a conversation with Aman Kumar directly on LinkedIn.
+                            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                You can also connect and chat with me directly on LinkedIn.
                             </p>
+                            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                                <a href="https://www.linkedin.com/in/aman-kumar-71944037b/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 0.88rem; padding: 0.75rem 1rem;">
+                                    <i class="fa-brands fa-linkedin"></i> LinkedIn DM
+                                </a>
+                                <a href="https://www.cgtrader.com/designers/aiveridox" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; justify-content: center; font-size: 0.88rem; padding: 0.75rem 1rem; border-color: #f59e0b; color: #f59e0b;">
+                                    <i class="fa-solid fa-cube"></i> CGTrader
+                                </a>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Right: Interactive Service Request Form -->
+                    <div class="service-form-panel tilt-card">
+                        <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;">
+                            <i class="fa-solid fa-paper-plane" style="color: var(--accent-cyan); font-size: 1.2rem; margin-right: 0.4rem;"></i>
+                            Send Project Request
+                        </h3>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.4rem;">
+                            Choose your required service, fill out the form, and click submit.
+                        </p>
+
+                        <form id="service-request-form">
+                            <!-- Service Selection Chips -->
+                            <div class="form-group">
+                                <label class="form-label">Select Service Required *</label>
+                                <div class="service-chips-container" id="service-chips">
+                                    <button type="button" class="service-chip active" data-service="3D Modeling &amp; Assets">🎨 3D Modeling</button>
+                                    <button type="button" class="service-chip" data-service="Story &amp; Script Writing">✍️ Story Writing</button>
+                                    <button type="button" class="service-chip" data-service="Website Making &amp; Dev">💻 Web Dev</button>
+                                    <button type="button" class="service-chip" data-service="Video Editing &amp; Reels">🎬 Video Editing</button>
+                                    <button type="button" class="service-chip" data-service="AI Image &amp; Video Creation">🤖 AI Media</button>
+                                    <button type="button" class="service-chip" data-service="Graphic Designing &amp; Brand">🖌️ Graphic Design</button>
+                                </div>
+                                <input type="hidden" name="service" id="selected-service-input" value="3D Modeling &amp; Assets" required>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label" for="client-name">Your Full Name *</label>
+                                    <input type="text" class="form-control" id="client-name" name="name" placeholder="e.g. John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="client-email">Your Email Address *</label>
+                                    <input type="email" class="form-control" id="client-email" name="email" placeholder="name@company.com" required>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label" for="client-phone">Phone / WhatsApp (Optional)</label>
+                                    <input type="text" class="form-control" id="client-phone" name="phone" placeholder="+91 98765 43210">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="client-budget">Budget / Timeline (Optional)</label>
+                                    <input type="text" class="form-control" id="client-budget" name="budget" placeholder="e.g. Flexible / 1-2 Weeks">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="client-message">Project Description &amp; Details *</label>
+                                <textarea class="form-control" id="client-message" name="message" rows="4" placeholder="Tell me about your project requirements, scope, references, or specific deliverables..." required></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.95rem 1.5rem; font-size: 1rem; border-radius: var(--radius-md);">
+                                <i class="fa-solid fa-paper-plane"></i> <span id="submit-btn-text">Submit Service Request</span>
+                            </button>
+
+                            <div id="form-status" class="form-status-box"></div>
+                        </form>
                     </div>
                 </div>
             </div>
