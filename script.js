@@ -232,7 +232,7 @@ function initTypewriter() {
         "3D Blender Artist & CGTrader Designer 🎨",
         "B.Tech AI & ML Student @ NIAT 🎓",
         "Full-Stack Web Developer (React + Django) 💻",
-        "Incoming Data Science Intern @ SkillCraft 📊",
+        "Software & AI Intern @ Axlore Solution 🚀",
         "3D WebGL & Creative Media Designer ✨"
     ];
 
