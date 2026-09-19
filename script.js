@@ -693,13 +693,14 @@ function initServiceForm() {
             const _endpoint = 'https://formsubmit.co/ajax/' + atob('YWsxMjc2MDU0QGdtYWlsLmNvbQ==');
 
             const payload = {
-                "Client Name": name,
-                "Client Email": email,
-                "Phone / WhatsApp": phone,
-                "Requested Service": service,
-                "Budget & Timeline": budget,
-                "Project Message": message,
+                "name": name,
+                "email": email,
+                "phone": phone,
+                "service": service,
+                "budget": budget,
+                "message": message,
                 "_subject": `🎯 Portfolio Service Request: ${service} (from ${name})`,
+                "_captcha": "false",
                 "_template": "table"
             };
 
@@ -714,7 +715,7 @@ function initServiceForm() {
 
             const result = await response.json();
 
-            if (response.ok || result.success === "true" || result.message) {
+            if (response.ok || result.success === "true" || (result.message && result.message.includes("Activation"))) {
                 if (statusBox) {
                     statusBox.className = 'form-status-box success';
                     statusBox.innerHTML = `

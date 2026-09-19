@@ -1111,8 +1111,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Services Section & 3D Service Cards
+   Services Section & 3D Service Cards (Dedicated Isolated Solid Window)
    ========================================================================== */
+#services {
+    position: relative;
+    z-index: 10;
+    background: #080d1a;
+    border-top: 1px solid rgba(56, 189, 248, 0.25);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="light"] #services {
+    background: #f1f5f9;
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+#contact {
+    position: relative;
+    z-index: 10;
+    background: #080d1a;
+    border-top: 1px solid rgba(168, 85, 247, 0.25);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="light"] #contact {
+    background: #f8fafc;
+    border-color: rgba(168, 85, 247, 0.3);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
