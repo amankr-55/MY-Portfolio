@@ -75,68 +75,66 @@ body {
     perspective: 1200px;
 }
 
-/* 3D Three.js WebGL Canvas (Focused on Left Side) */
+/* 3D Three.js WebGL Canvas (Full Screen Viewport, 3D Rendered on Left Half) */
 #three-canvas-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 52vw;
+    width: 100vw;
     height: 100vh;
     z-index: 0;
     pointer-events: none;
     opacity: 1;
 }
 
-/* Right Side Top-to-Bottom Background Image (100% Bright, Crisp & Clear) */
+/* Right Side Top-to-Bottom Background Image (100% Fixed, Bright & Crisp on Right Half) */
 .bg-profile-backdrop {
     position: fixed;
     top: 0;
     right: 0;
-    width: 48vw;
-    max-width: 850px;
+    width: 50vw;
     height: 100vh;
     background-image: url('assets/profile.jpg');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    opacity: 1;
-    filter: contrast(1.12) brightness(1.08) saturate(1.15);
+    opacity: 0.95;
+    filter: contrast(1.15) brightness(1.08) saturate(1.18);
     z-index: 0;
     pointer-events: none;
-    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 100%);
-    transition: all 0.5s ease;
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.35);
+    border-left: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.45);
+    transition: all 0.4s ease;
 }
 
 [data-theme="light"] .bg-profile-backdrop {
-    opacity: 0.95;
+    opacity: 0.90;
     filter: contrast(1.05) brightness(1.02);
 }
 
-/* Glow Orbs on Left Side to illuminate 3D effects */
+/* Glow Orbs on Left Side */
 .glow-orb {
     position: fixed;
     border-radius: 50%;
     filter: blur(120px);
     z-index: 0;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.40;
     animation: floatOrb 16s ease-in-out infinite alternate;
 }
 .glow-orb-1 {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     background: #38bdf8;
     top: 5%;
-    left: -100px;
+    left: -120px;
 }
 .glow-orb-2 {
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     background: #a855f7;
     bottom: 10%;
-    left: -80px;
+    left: -100px;
     animation-delay: -5s;
 }
 
