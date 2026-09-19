@@ -57,11 +57,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
 }
 
 body {
@@ -70,6 +75,8 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -243,6 +250,7 @@ body {
     padding: 0 1.5rem;
     position: relative;
     z-index: 1;
+    overflow-x: hidden;
 }
 
 section {
@@ -1551,8 +1559,11 @@ footer {
     body {
         font-size: 15px;
     }
+    .container {
+        padding: 0 1rem;
+    }
     section {
-        padding: 4.5rem 0;
+        padding: 4rem 0;
     }
     .navbar {
         top: 0.6rem;
@@ -1594,22 +1605,24 @@ footer {
     }
     .hero-section {
         min-height: auto;
-        padding-top: 6rem;
-        padding-bottom: 3rem;
+        padding-top: 5.5rem;
+        padding-bottom: 2.5rem;
     }
     .hero-title {
-        font-size: clamp(2.2rem, 8vw, 2.9rem);
+        font-size: clamp(2rem, 7.5vw, 2.8rem);
         line-height: 1.2;
+        word-break: break-word;
     }
     .typed-wrapper {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         min-height: 1.8rem;
     }
     .section-title {
-        font-size: clamp(1.8rem, 6vw, 2.3rem);
+        font-size: clamp(1.7rem, 6vw, 2.2rem);
+        word-break: break-word;
     }
     .section-desc {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
     }
     .about-highlights {
         grid-template-columns: 1fr;
@@ -1628,28 +1641,47 @@ footer {
     .posts-grid {
         grid-template-columns: 1fr;
     }
+    .glass-card {
+        padding: 1.6rem 1.2rem;
+    }
     .contact-info-panel, .service-form-panel {
-        padding: 1.8rem 1.4rem;
+        padding: 1.6rem 1.2rem;
     }
     .form-row-2col {
         grid-template-columns: 1fr;
         gap: 0;
     }
     .avatar-card-container {
-        max-width: 290px;
+        max-width: 280px;
         margin: 0 auto;
     }
+    .avatar-card {
+        padding: 1.8rem 1.2rem;
+    }
+    .avatar-img-wrap {
+        width: 150px;
+        height: 150px;
+    }
     .floating-badge {
-        padding: 0.45rem 0.85rem;
-        font-size: 0.78rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     .badge-top-right {
-        top: -12px;
-        right: -8px;
+        top: -8px;
+        right: -6px;
     }
     .badge-bottom-left {
-        bottom: -12px;
-        left: -8px;
+        bottom: -8px;
+        left: -6px;
+    }
+    .btn {
+        max-width: 100%;
+        white-space: normal;
+    }
+    .project-btn {
+        white-space: normal;
+        word-break: break-all;
     }
     .toast-msg {
         left: 50%;
@@ -1672,11 +1704,15 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 0.85rem;
+    }
     .hero-title {
-        font-size: 2.1rem;
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
     }
     .hero-bio {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
+        line-height: 1.65;
     }
     .hero-cta {
         flex-direction: column;
@@ -1690,30 +1726,61 @@ footer {
     .hero-socials {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.6rem;
     }
     .stats-bar {
         grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        padding: 1.2rem 0.8rem;
+        gap: 0.6rem;
+        padding: 1rem 0.6rem;
     }
     .stat-number {
-        font-size: 1.6rem;
+        font-size: 1.45rem;
     }
     .stat-label {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
     }
     .service-card {
-        padding: 1.6rem 1.25rem;
+        padding: 1.4rem 1rem;
     }
     .service-chips-container {
         gap: 0.35rem;
     }
     .service-chip {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.7rem;
+        font-size: 0.72rem;
+        padding: 0.35rem 0.65rem;
     }
     .linkedin-connect-hero-box {
-        padding: 1.8rem 1.2rem;
+        padding: 1.5rem 1rem;
+    }
+    .avatar-card-container {
+        max-width: 260px;
+    }
+    .avatar-img-wrap {
+        width: 130px;
+        height: 130px;
+    }
+    .badge-top-right {
+        top: -6px;
+        right: -2px;
+    }
+    .badge-bottom-left {
+        bottom: -6px;
+        left: -2px;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.65rem;
+    }
+    .avatar-card-container {
+        max-width: 240px;
+    }
+    .floating-badge {
+        font-size: 0.68rem;
+        padding: 0.3rem 0.55rem;
+    }
+    .stats-bar {
+        grid-template-columns: 1fr;
     }
 }

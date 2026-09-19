@@ -339,6 +339,8 @@ function initThreeJSScene() {
    3D Tilt & Interactive Depth Tracker (High-Performance 3D Effect)
    ========================================================================== */
 function init3DTiltEffects() {
+    if (window.matchMedia('(hover: none)').matches || 'ontouchstart' in window) return;
+
     const cards = document.querySelectorAll('.glass-card, .avatar-card, .skill-card, .highlight-box, .stat-item, .project-card, .achievement-card, .cgtrader-card, .contact-card');
 
     cards.forEach(card => {
