@@ -5,7 +5,7 @@ const linkedinPosts = [
     {
         id: 1,
         author: "Aman Kumar",
-        role: "B.Tech AI & ML Student | 3D Blender Artist & CGTrader Designer",
+        role: "3D Technical Artist & CGTrader Designer (@aiveridox)",
         avatar: "assets/profile.jpg",
         fallbackAvatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
         date: "3D Art & Modeling",
@@ -21,7 +21,7 @@ const linkedinPosts = [
     {
         id: 2,
         author: "Aman Kumar",
-        role: "B.Tech AI & ML Student | NxtWave Institute of Advanced Technologies (NIAT)",
+        role: "AI & ML Engineer | Full-Stack Web Developer",
         avatar: "assets/profile.jpg",
         fallbackAvatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
         date: "Project Showcase",

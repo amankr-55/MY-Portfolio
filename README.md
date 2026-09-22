@@ -7,7 +7,7 @@
 
 ### 🌐 Live URL: **[https://amankr-55.github.io/MY-Portfolio/](https://amankr-55.github.io/MY-Portfolio/)**
 
-An ultra-modern, 3D WebGL (Three.js) & glassmorphism-styled personal developer portfolio for Aman Kumar (B.Tech AI & ML Student @ NIAT Jaipur, 3D Blender Artist on CGTrader `@aiveridox`, Full-Stack Web Developer).
+An ultra-modern, 3D WebGL (Three.js) & glassmorphism-styled personal developer portfolio for Aman Kumar (3D Technical Artist on CGTrader `@aiveridox`, AI & ML Engineer @ NIAT, Full-Stack Web Developer & Intern @ Axlore Solution).
 
 ---
 

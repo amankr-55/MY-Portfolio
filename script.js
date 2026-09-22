@@ -376,11 +376,11 @@ function initTypewriter() {
     if (!textElement) return;
 
     const phrases = [
-        "3D Blender Artist & CGTrader Designer 🎨",
-        "B.Tech AI & ML Student @ NIAT 🎓",
+        "3D Technical Artist & CGTrader Designer 🎨",
+        "AI & Machine Learning Engineer 🤖",
         "Full-Stack Web Developer (React + Django) 💻",
         "Software & AI Intern @ Axlore Solution 🚀",
-        "3D WebGL & Creative Media Designer ✨"
+        "3D WebGL & Interactive Media Specialist ✨"
     ];
 
     let phraseIndex = 0;
