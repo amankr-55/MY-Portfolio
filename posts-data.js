@@ -37,17 +37,17 @@ const linkedinPosts = [
     {
         id: 3,
         author: "Aman Kumar",
-        role: "Software & Technology Intern @ Axlore Solution",
+        role: "Web Development Intern @ Axlero Solutions",
         avatar: "assets/profile.jpg",
         fallbackAvatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
-        date: "Experience Update",
-        tag: "Internship & Innovation",
-        content: "Excited to be working as a Software & Technology Intern at Axlore Solution! 🚀 Actively contributing to software engineering workflows, web application architectures, and innovative AI/ML implementations.",
-        hashtags: ["#AxloreSolution", "#SoftwareEngineering", "#Internship", "#AIML", "#WebDevelopment", "#GrowthMindset"],
-        likes: 98,
-        comments: 34,
+        date: "Milestone • October 2026",
+        tag: "Internship Certificate",
+        content: "Thrilled to receive my Certificate of Internship Completion for Web Development from Axlero Solutions! 🎓🚀 Grateful to HR Manager Sudhir Kumar Sharma and the engineering team for an enriching hands-on experience in full-stack web engineering, scalable architectures, and modern technologies.",
+        hashtags: ["#AxleroSolutions", "#WebDevelopment", "#InternshipCompletion", "#Certificate", "#FullStack", "#React", "#SoftwareEngineering"],
+        likes: 126,
+        comments: 42,
         postUrl: "https://www.linkedin.com/in/aman-kumar-71944037b/",
-        postImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+        postImage: "assets/axlero-certificate.png",
         mediaType: "image"
     }
 ];

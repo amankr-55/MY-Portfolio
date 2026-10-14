@@ -870,3 +870,37 @@ function init3DCursor() {
 
     renderCursor();
 }
+
+/* ==========================================================================
+   Certificate Lightbox Modal System
+   ========================================================================== */
+window.openCertModal = function(imgSrc, title) {
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('cert-modal-img');
+    const modalTitle = document.getElementById('cert-modal-title');
+    const modalDownload = document.getElementById('cert-modal-download');
+    if (!modal || !modalImg) return;
+
+    modalImg.src = imgSrc;
+    if (modalTitle) modalTitle.textContent = title || 'Certificate of Internship Completion';
+    if (modalDownload) {
+        modalDownload.href = imgSrc;
+        modalDownload.download = title ? `${title.replace(/[^a-zA-Z0-9_-]/g, '_')}.png` : 'Certificate.png';
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeCertModal = function() {
+    const modal = document.getElementById('cert-modal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        window.closeCertModal();
+    }
+});
+
